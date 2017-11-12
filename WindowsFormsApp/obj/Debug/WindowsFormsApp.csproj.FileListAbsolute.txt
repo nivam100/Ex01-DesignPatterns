@@ -1,0 +1,8 @@
+C:\Users\User\Desktop\Ex01\A18 Ex01 Etai 201506656 Niv 203723622\WindowsFormsApp\bin\Debug\WindowsFormsApp.exe
+C:\Users\User\Desktop\Ex01\A18 Ex01 Etai 201506656 Niv 203723622\WindowsFormsApp\bin\Debug\WindowsFormsApp.pdb
+C:\Users\User\Desktop\Ex01\A18 Ex01 Etai 201506656 Niv 203723622\WindowsFormsApp\obj\Debug\WindowsFormsApp.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Ex01\A18 Ex01 Etai 201506656 Niv 203723622\WindowsFormsApp\obj\Debug\WindowsFormsApp.Properties.Resources.resources
+C:\Users\User\Desktop\Ex01\A18 Ex01 Etai 201506656 Niv 203723622\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Ex01\A18 Ex01 Etai 201506656 Niv 203723622\WindowsFormsApp\obj\Debug\WindowsFormsApp.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Ex01\A18 Ex01 Etai 201506656 Niv 203723622\WindowsFormsApp\obj\Debug\WindowsFormsApp.exe
+C:\Users\User\Desktop\Ex01\A18 Ex01 Etai 201506656 Niv 203723622\WindowsFormsApp\obj\Debug\WindowsFormsApp.pdb
