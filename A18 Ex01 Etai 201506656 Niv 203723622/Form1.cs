@@ -111,15 +111,9 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             loginAndInit();
         }
 
-        private void pictureBoxProfile_Click(object sender, EventArgs e)
+        private void buttonLogout_Click_1(object sender, EventArgs e)
         {
 
         }
-
-        private void labelUsername_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
