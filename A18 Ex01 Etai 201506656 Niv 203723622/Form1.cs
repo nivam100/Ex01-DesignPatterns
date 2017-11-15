@@ -92,7 +92,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             string FirstAndLastname = String.Format("{0} {1}", this.m_LoggedInUser.FirstName, m_LoggedInUser.LastName);
             this.labelUsername.Text = FirstAndLastname;
             this.pictureBoxProfile.ImageLocation = this.m_LoggedInUser.PictureSmallURL;
-
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -111,9 +110,31 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             loginAndInit();
         }
 
-        private void buttonLogout_Click_1(object sender, EventArgs e)
+        private void buttonPost_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(this.textBoxPostText.Text))
+            {
+               // m_LoggedInUser
+            }
+        }
 
+        private void buttonInsertImagePost_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                string file = openFileDialog1.FileName;
+                try
+                {
+                    //string text = File.ReadAllText(file);
+                    //size = text.Length;
+                    MessageBox.Show(file);
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
     }
 }
