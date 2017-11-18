@@ -25,7 +25,9 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             base.OnShown(e);
             loginAndInit();
         }
+
         User m_LoggedInUser;
+        List<string> m_ListOfUsersLikedPost;
 
         private void loginAndInit()
         {
@@ -114,13 +116,73 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         {
             if (!string.IsNullOrEmpty(this.textBoxPostText.Text))
             {
-               // m_LoggedInUser
+                Status postedStatus = m_LoggedInUser.PostStatus(textBoxPostText.Text);
+                MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
+            } else
+            {
+                textBoxPostText.Text = "You must post some text!";
+            }
+        }
+
+
+        private void fetchPosts()
+        {
+            foreach (Post post in m_LoggedInUser.Posts)
+            {
+                if (post.Message != null)
+                {
+                    postsAndLikes.Items.Add(post.Message);
+                }
+                else if (post.Caption != null)
+                {
+                    postsAndLikes.Items.Add(post.Caption);
+                }
+                else
+                {
+                    postsAndLikes.Items.Add(string.Format("[{0}]", post.Type));
+                }
+            }
+
+            if (m_LoggedInUser.Posts.Count == 0)
+            {
+                MessageBox.Show("No Posts to retrieve :(");
+            }
+        }
+
+        private void FetchFriends()
+        {
+            lsitOfFriends.Items.Clear();
+            lsitOfFriends.DisplayMember = "Name";
+            foreach (User friend in m_LoggedInUser.Friends)
+            {
+                lsitOfFriends.Items.Add(friend);
+                friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
+            }
+
+            if (m_LoggedInUser.Friends.Count == 0)
+            {
+                MessageBox.Show("No Friends to retrieve :(");
+            }
+        }
+
+        private void fetchEvents()
+        {
+            ListOfEvents.Items.Clear();
+            ListOfEvents.DisplayMember = "Name";
+            foreach (Event fbEvent in m_LoggedInUser.Events)
+            {
+                ListOfEvents.Items.Add(fbEvent);
+            }
+
+            if (m_LoggedInUser.Events.Count == 0)
+            {
+                MessageBox.Show("No Events to retrieve :(");
             }
         }
 
         private void buttonInsertImagePost_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
             DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
             if (result == DialogResult.OK) // Test result.
             {
@@ -135,6 +197,38 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                 {
                 }
             }
+        }
+
+       
+
+        private void buttonFetchPosts_Click(object sender, EventArgs e)
+        {
+            fetchPosts();
+        }
+
+        private void textBoxPostText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void postsAndLikes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFetchFriends_Click(object sender, EventArgs e)
+        {
+            FetchFriends();
+        }
+
+        private void lsitOfFriends_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFetchLikedEvents_Click(object sender, EventArgs e)
+        {
+            fetchEvents();
         }
     }
 }
