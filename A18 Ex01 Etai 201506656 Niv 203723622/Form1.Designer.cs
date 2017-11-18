@@ -39,10 +39,11 @@
             this.postsAndLikes = new System.Windows.Forms.ListBox();
             this.buttonFetchFriends = new System.Windows.Forms.Button();
             this.lsitOfFriends = new System.Windows.Forms.ListBox();
-            this.buttonFetchEvents = new System.Windows.Forms.Button();
-            this.EventsList = new System.Windows.Forms.ListBox();
             this.buttonFetchLikedEvents = new System.Windows.Forms.Button();
             this.ListOfEvents = new System.Windows.Forms.ListBox();
+            this.buttonFetchPages = new System.Windows.Forms.Button();
+            this.pages = new System.Windows.Forms.ListBox();
+            this.buttonCreateRandomPost = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,27 +158,9 @@
             this.lsitOfFriends.TabIndex = 14;
             this.lsitOfFriends.SelectedIndexChanged += new System.EventHandler(this.lsitOfFriends_SelectedIndexChanged);
             // 
-            // buttonFetchEvents
-            // 
-            this.buttonFetchEvents.Location = new System.Drawing.Point(393, 97);
-            this.buttonFetchEvents.Name = "buttonFetchEvents";
-            this.buttonFetchEvents.Size = new System.Drawing.Size(93, 23);
-            this.buttonFetchEvents.TabIndex = 15;
-            this.buttonFetchEvents.Text = "Fetch Events";
-            this.buttonFetchEvents.UseVisualStyleBackColor = true;
-            this.buttonFetchEvents.Click += new System.EventHandler(this.buttonFetchLikedEvents_Click);
-            // 
-            // EventsList
-            // 
-            this.EventsList.FormattingEnabled = true;
-            this.EventsList.Location = new System.Drawing.Point(393, 141);
-            this.EventsList.Name = "EventsList";
-            this.EventsList.Size = new System.Drawing.Size(120, 199);
-            this.EventsList.TabIndex = 16;
-            // 
             // buttonFetchLikedEvents
             // 
-            this.buttonFetchLikedEvents.Location = new System.Drawing.Point(567, 97);
+            this.buttonFetchLikedEvents.Location = new System.Drawing.Point(386, 97);
             this.buttonFetchLikedEvents.Name = "buttonFetchLikedEvents";
             this.buttonFetchLikedEvents.Size = new System.Drawing.Size(97, 23);
             this.buttonFetchLikedEvents.TabIndex = 17;
@@ -188,20 +171,49 @@
             // ListOfEvents
             // 
             this.ListOfEvents.FormattingEnabled = true;
-            this.ListOfEvents.Location = new System.Drawing.Point(567, 141);
+            this.ListOfEvents.Location = new System.Drawing.Point(386, 141);
             this.ListOfEvents.Name = "ListOfEvents";
             this.ListOfEvents.Size = new System.Drawing.Size(120, 199);
             this.ListOfEvents.TabIndex = 18;
+            // 
+            // buttonFetchPages
+            // 
+            this.buttonFetchPages.Location = new System.Drawing.Point(542, 97);
+            this.buttonFetchPages.Name = "buttonFetchPages";
+            this.buttonFetchPages.Size = new System.Drawing.Size(88, 23);
+            this.buttonFetchPages.TabIndex = 19;
+            this.buttonFetchPages.Text = "Fetch Pages";
+            this.buttonFetchPages.UseVisualStyleBackColor = true;
+            this.buttonFetchPages.Click += new System.EventHandler(this.buttonFetchPages_Click);
+            // 
+            // pages
+            // 
+            this.pages.FormattingEnabled = true;
+            this.pages.Location = new System.Drawing.Point(542, 141);
+            this.pages.Name = "pages";
+            this.pages.Size = new System.Drawing.Size(120, 199);
+            this.pages.TabIndex = 20;
+            // 
+            // buttonCreateRandomPost
+            // 
+            this.buttonCreateRandomPost.Location = new System.Drawing.Point(205, 38);
+            this.buttonCreateRandomPost.Name = "buttonCreateRandomPost";
+            this.buttonCreateRandomPost.Size = new System.Drawing.Size(220, 23);
+            this.buttonCreateRandomPost.TabIndex = 21;
+            this.buttonCreateRandomPost.Text = "Create Random \"Pigoa\" Facebook";
+            this.buttonCreateRandomPost.UseVisualStyleBackColor = true;
+            this.buttonCreateRandomPost.Click += new System.EventHandler(this.buttonCreateRandomPost_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 363);
+            this.Controls.Add(this.buttonCreateRandomPost);
+            this.Controls.Add(this.pages);
+            this.Controls.Add(this.buttonFetchPages);
             this.Controls.Add(this.ListOfEvents);
             this.Controls.Add(this.buttonFetchLikedEvents);
-            this.Controls.Add(this.EventsList);
-            this.Controls.Add(this.buttonFetchEvents);
             this.Controls.Add(this.lsitOfFriends);
             this.Controls.Add(this.buttonFetchFriends);
             this.Controls.Add(this.postsAndLikes);
@@ -234,10 +246,11 @@
         private System.Windows.Forms.ListBox postsAndLikes;
         private System.Windows.Forms.Button buttonFetchFriends;
         private System.Windows.Forms.ListBox lsitOfFriends;
-        private System.Windows.Forms.Button buttonFetchEvents;
-        private System.Windows.Forms.ListBox EventsList;
         private System.Windows.Forms.Button buttonFetchLikedEvents;
         private System.Windows.Forms.ListBox ListOfEvents;
+        private System.Windows.Forms.Button buttonFetchPages;
+        private System.Windows.Forms.ListBox pages;
+        private System.Windows.Forms.Button buttonCreateRandomPost;
     }
 }
 

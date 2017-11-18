@@ -27,7 +27,55 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         }
 
         User m_LoggedInUser;
-        List<string> m_ListOfUsersLikedPost;
+        
+        enum eNoun1
+        {
+            Brown_Eyes,
+            Bus_Driver,
+            Really_tough_guy,
+            Wheed_Lover,
+            Stripper,
+            Drug_Addict,
+            Lazy_Dog
+        }
+
+        enum eNoun2
+        {
+            Hairy,
+            Pervert,
+            Sexy,
+            Nasty,
+            Bearded,
+            Snoring,
+            Shaky
+        }
+
+        enum eMember
+        {
+           Friend,
+           Partner,
+           Boss,
+           Teacher,
+           Grandmother,
+           Girl_Friend,
+           Brother,
+           Sister,
+           Mom
+        }
+
+        enum eProffession
+        {
+            Entrepreneur,
+            Coder,
+            Waiter,
+            Trader,
+            Fighter,
+            Pilot,
+            Wrestler,
+            Chef,
+            Player,
+            Translator
+        }
 
         private void loginAndInit()
         {
@@ -165,7 +213,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             }
         }
 
-        private void fetchEvents()
+        private void FetchEvents()
         {
             ListOfEvents.Items.Clear();
             ListOfEvents.DisplayMember = "Name";
@@ -199,7 +247,33 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             }
         }
 
-       
+        private void FetchPages()
+        {
+            pages.Items.Clear();
+            pages.DisplayMember = "Name";
+        
+            foreach (Page page in m_LoggedInUser.LikedPages)
+            {
+                pages.Items.Add(page);
+            }
+
+            if (m_LoggedInUser.LikedPages.Count == 0)
+            {
+                MessageBox.Show("No liked pages to retrieve :(");
+            }
+        }
+
+        private void CreateRandomPost()
+        {
+            string noun1 = Enum.GetName(typeof (eNoun1), Convert.ToInt32((new Random()).NextDouble() * Enum.GetNames(typeof(eNoun1)).Length));
+            string noun2 = Enum.GetName(typeof(eNoun2), Convert.ToInt32((new Random()).NextDouble() * Enum.GetNames(typeof(eNoun2)).Length));
+            string member = Enum.GetName(typeof(eMember), Convert.ToInt32((new Random()).NextDouble() * Enum.GetNames(typeof(eMember)).Length));
+            string profession = Enum.GetName(typeof(eProffession), Convert.ToInt32((new Random()).NextDouble() * Enum.GetNames(typeof(eProffession)).Length));
+            string randomPost = "my " + member + " is a " + noun1.Replace("_", " ") + " " + noun2 + " " + profession;
+            Status postedStatus = m_LoggedInUser.PostStatus(randomPost);
+            MessageBox.Show("Status Posted! ID: " + postedStatus.Id + "the post is: " + randomPost);
+        }
+        
 
         private void buttonFetchPosts_Click(object sender, EventArgs e)
         {
@@ -228,7 +302,17 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void buttonFetchLikedEvents_Click(object sender, EventArgs e)
         {
-            fetchEvents();
+            FetchEvents();
+        }
+
+        private void buttonFetchPages_Click(object sender, EventArgs e)
+        {
+            FetchPages();
+        }
+
+        private void buttonCreateRandomPost_Click(object sender, EventArgs e)
+        {
+            CreateRandomPost();
         }
     }
 }
