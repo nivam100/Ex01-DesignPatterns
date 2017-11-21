@@ -27,6 +27,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         }
 
         User m_LoggedInUser;
+        User m_UserTest; 
         
         enum eNoun1
         {
@@ -34,7 +35,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             Bus_Driver,
             Really_tough_guy,
             Wheed_Lover,
-            Stripper,
+            Pole_Stripper,
             Drug_Addict,
             Lazy_Dog
         }
@@ -57,7 +58,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
            Boss,
            Teacher,
            Grandmother,
-           Girl_Friend,
+           Girlfriend,
            Brother,
            Sister,
            Mom
@@ -83,7 +84,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
             /// Use the FacebookService.Login method to display the login form to any user who wish to use this application.
             /// You can then save the result.AccessToken for future auto-connect to this user:
-            LoginResult result = FacebookService.Login("124318548263284", /// (design patterrns Ex01 app)
+            LoginResult result = FacebookService.Login("1450160541956417", /// (design patterrns Ex01 app)     //"124318548263284"
                 "public_profile",
                 "user_education_history",
                 "user_birthday",
@@ -179,7 +180,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             {
                 if (post.Message != null)
                 {
-                    postsAndLikes.Items.Add(post.Message);
+                    postsAndLikes.Items.Add(post.Message); 
                 }
                 else if (post.Caption != null)
                 {
@@ -197,14 +198,35 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             }
         }
 
-        private void FetchFriends()
+        private void FetchFriends(bool i_CheckBirthday)
         {
             lsitOfFriends.Items.Clear();
             lsitOfFriends.DisplayMember = "Name";
+            int counter = 0;
             foreach (User friend in m_LoggedInUser.Friends)
             {
-                lsitOfFriends.Items.Add(friend);
+                if (!i_CheckBirthday)
+                {
+                    lsitOfFriends.Items.Add(friend);
+                }
+                else
+                {
+                    try
+                    {
+                        friendsBirthdays.Items.Add(friend.FirstName + " " + friend.LastName + ": " + friend.Birthday.ToString());
+                        counter++;
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                }
                 friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
+            }
+
+            if(counter == 0)
+            {
+                MessageBox.Show("No Birthdays to retrieve :(");
             }
 
             if (m_LoggedInUser.Friends.Count == 0)
@@ -292,7 +314,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void buttonFetchFriends_Click(object sender, EventArgs e)
         {
-            FetchFriends();
+            FetchFriends(false);
         }
 
         private void lsitOfFriends_SelectedIndexChanged(object sender, EventArgs e)
@@ -313,6 +335,11 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         private void buttonCreateRandomPost_Click(object sender, EventArgs e)
         {
             CreateRandomPost();
+        }
+
+        private void buttonGetBirthdays_Click(object sender, EventArgs e)
+        {
+            FetchFriends(true);
         }
     }
 }

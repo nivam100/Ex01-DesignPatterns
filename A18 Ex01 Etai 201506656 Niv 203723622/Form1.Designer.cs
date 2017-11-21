@@ -34,7 +34,6 @@
             this.buttonLogin = new System.Windows.Forms.Button();
             this.textBoxPostText = new System.Windows.Forms.TextBox();
             this.buttonPost = new System.Windows.Forms.Button();
-            this.buttonInsertImagePost = new System.Windows.Forms.Button();
             this.buttonFetchPosts = new System.Windows.Forms.Button();
             this.postsAndLikes = new System.Windows.Forms.ListBox();
             this.buttonFetchFriends = new System.Windows.Forms.Button();
@@ -44,6 +43,8 @@
             this.buttonFetchPages = new System.Windows.Forms.Button();
             this.pages = new System.Windows.Forms.ListBox();
             this.buttonCreateRandomPost = new System.Windows.Forms.Button();
+            this.buttonGetBirthdays = new System.Windows.Forms.Button();
+            this.friendsBirthdays = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,17 +109,6 @@
             this.buttonPost.Text = "Post";
             this.buttonPost.UseVisualStyleBackColor = true;
             this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
-            // 
-            // buttonInsertImagePost
-            // 
-            this.buttonInsertImagePost.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonInsertImagePost.Location = new System.Drawing.Point(157, 39);
-            this.buttonInsertImagePost.Name = "buttonInsertImagePost";
-            this.buttonInsertImagePost.Size = new System.Drawing.Size(42, 23);
-            this.buttonInsertImagePost.TabIndex = 10;
-            this.buttonInsertImagePost.Text = "IMG";
-            this.buttonInsertImagePost.UseVisualStyleBackColor = true;
-            this.buttonInsertImagePost.Click += new System.EventHandler(this.buttonInsertImagePost_Click);
             // 
             // buttonFetchPosts
             // 
@@ -196,19 +186,39 @@
             // 
             // buttonCreateRandomPost
             // 
-            this.buttonCreateRandomPost.Location = new System.Drawing.Point(205, 38);
+            this.buttonCreateRandomPost.Location = new System.Drawing.Point(157, 38);
             this.buttonCreateRandomPost.Name = "buttonCreateRandomPost";
-            this.buttonCreateRandomPost.Size = new System.Drawing.Size(220, 23);
+            this.buttonCreateRandomPost.Size = new System.Drawing.Size(268, 23);
             this.buttonCreateRandomPost.TabIndex = 21;
             this.buttonCreateRandomPost.Text = "Create Random \"Pigoa\" Facebook";
             this.buttonCreateRandomPost.UseVisualStyleBackColor = true;
             this.buttonCreateRandomPost.Click += new System.EventHandler(this.buttonCreateRandomPost_Click);
+            // 
+            // buttonGetBirthdays
+            // 
+            this.buttonGetBirthdays.Location = new System.Drawing.Point(692, 97);
+            this.buttonGetBirthdays.Name = "buttonGetBirthdays";
+            this.buttonGetBirthdays.Size = new System.Drawing.Size(163, 23);
+            this.buttonGetBirthdays.TabIndex = 22;
+            this.buttonGetBirthdays.Text = "Remind me friends birthdays!";
+            this.buttonGetBirthdays.UseVisualStyleBackColor = true;
+            this.buttonGetBirthdays.Click += new System.EventHandler(this.buttonGetBirthdays_Click);
+            // 
+            // friendsBirthdays
+            // 
+            this.friendsBirthdays.FormattingEnabled = true;
+            this.friendsBirthdays.Location = new System.Drawing.Point(692, 141);
+            this.friendsBirthdays.Name = "friendsBirthdays";
+            this.friendsBirthdays.Size = new System.Drawing.Size(120, 199);
+            this.friendsBirthdays.TabIndex = 23;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 363);
+            this.Controls.Add(this.friendsBirthdays);
+            this.Controls.Add(this.buttonGetBirthdays);
             this.Controls.Add(this.buttonCreateRandomPost);
             this.Controls.Add(this.pages);
             this.Controls.Add(this.buttonFetchPages);
@@ -218,7 +228,6 @@
             this.Controls.Add(this.buttonFetchFriends);
             this.Controls.Add(this.postsAndLikes);
             this.Controls.Add(this.buttonFetchPosts);
-            this.Controls.Add(this.buttonInsertImagePost);
             this.Controls.Add(this.buttonPost);
             this.Controls.Add(this.textBoxPostText);
             this.Controls.Add(this.labelUsername);
@@ -241,7 +250,6 @@
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.TextBox textBoxPostText;
         private System.Windows.Forms.Button buttonPost;
-        private System.Windows.Forms.Button buttonInsertImagePost;
         private System.Windows.Forms.Button buttonFetchPosts;
         private System.Windows.Forms.ListBox postsAndLikes;
         private System.Windows.Forms.Button buttonFetchFriends;
@@ -251,6 +259,8 @@
         private System.Windows.Forms.Button buttonFetchPages;
         private System.Windows.Forms.ListBox pages;
         private System.Windows.Forms.Button buttonCreateRandomPost;
+        private System.Windows.Forms.Button buttonGetBirthdays;
+        private System.Windows.Forms.ListBox friendsBirthdays;
     }
 }
 
