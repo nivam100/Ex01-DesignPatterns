@@ -13,6 +13,10 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
     public partial class Form1 : Form
     {
+        User m_LoggedInUser;
+        User m_UserTest;
+        string m_AppID;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,10 +30,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             loginAndInit();
         }
 
-        User m_LoggedInUser;
-        User m_UserTest;
-        string m_AppID;
-        
         enum eNoun1
         {
             Brown_Eyes,
@@ -232,7 +232,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                 friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
             }
 
-            if(counter == 0)
+            if(counter == 0 && i_CheckBirthday)
             {
                 MessageBox.Show("No Birthdays to retrieve :(");
             }
