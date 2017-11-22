@@ -13,9 +13,9 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
     public partial class Form1 : Form
     {
-        User m_LoggedInUser;
-        User m_UserTest;
-        string m_AppID;
+        private User m_LoggedInUser;
+        private User m_UserTest;
+        private string m_AppID;
 
         public Form1()
         {
