@@ -45,13 +45,16 @@
             this.buttonCreateRandomPost = new System.Windows.Forms.Button();
             this.buttonGetBirthdays = new System.Windows.Forms.Button();
             this.friendsBirthdays = new System.Windows.Forms.ListBox();
+            this.classAppId = new System.Windows.Forms.CheckBox();
+            this.ourAppId = new System.Windows.Forms.CheckBox();
+            this.label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Location = new System.Drawing.Point(22, 67);
+            this.labelUsername.Location = new System.Drawing.Point(166, 64);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(55, 13);
             this.labelUsername.TabIndex = 7;
@@ -59,7 +62,7 @@
             // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(94, 12);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(250, 14);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
             this.pictureBoxProfile.Size = new System.Drawing.Size(57, 50);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -68,7 +71,7 @@
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(12, 41);
+            this.buttonLogout.Location = new System.Drawing.Point(169, 38);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.buttonLogout.Size = new System.Drawing.Size(75, 23);
@@ -79,7 +82,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(12, 12);
+            this.buttonLogin.Location = new System.Drawing.Point(169, 12);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.buttonLogin.Size = new System.Drawing.Size(75, 23);
@@ -93,7 +96,7 @@
             this.textBoxPostText.AcceptsReturn = true;
             this.textBoxPostText.AllowDrop = true;
             this.textBoxPostText.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPostText.Location = new System.Drawing.Point(157, 12);
+            this.textBoxPostText.Location = new System.Drawing.Point(313, 14);
             this.textBoxPostText.Name = "textBoxPostText";
             this.textBoxPostText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxPostText.Size = new System.Drawing.Size(268, 23);
@@ -102,7 +105,7 @@
             // 
             // buttonPost
             // 
-            this.buttonPost.Location = new System.Drawing.Point(431, 12);
+            this.buttonPost.Location = new System.Drawing.Point(587, 13);
             this.buttonPost.Name = "buttonPost";
             this.buttonPost.Size = new System.Drawing.Size(75, 23);
             this.buttonPost.TabIndex = 9;
@@ -186,7 +189,7 @@
             // 
             // buttonCreateRandomPost
             // 
-            this.buttonCreateRandomPost.Location = new System.Drawing.Point(157, 38);
+            this.buttonCreateRandomPost.Location = new System.Drawing.Point(313, 40);
             this.buttonCreateRandomPost.Name = "buttonCreateRandomPost";
             this.buttonCreateRandomPost.Size = new System.Drawing.Size(268, 23);
             this.buttonCreateRandomPost.TabIndex = 21;
@@ -212,11 +215,45 @@
             this.friendsBirthdays.Size = new System.Drawing.Size(120, 199);
             this.friendsBirthdays.TabIndex = 23;
             // 
+            // classAppId
+            // 
+            this.classAppId.AutoSize = true;
+            this.classAppId.Location = new System.Drawing.Point(12, 38);
+            this.classAppId.Name = "classAppId";
+            this.classAppId.Size = new System.Drawing.Size(87, 17);
+            this.classAppId.TabIndex = 24;
+            this.classAppId.Text = "Class App ID";
+            this.classAppId.UseVisualStyleBackColor = true;
+            this.classAppId.CheckedChanged += new System.EventHandler(this.classAppId_CheckedChanged);
+            // 
+            // ourAppId
+            // 
+            this.ourAppId.AutoSize = true;
+            this.ourAppId.Location = new System.Drawing.Point(12, 60);
+            this.ourAppId.Name = "ourAppId";
+            this.ourAppId.Size = new System.Drawing.Size(79, 17);
+            this.ourAppId.TabIndex = 25;
+            this.ourAppId.Text = "Our App ID";
+            this.ourAppId.UseVisualStyleBackColor = true;
+            this.ourAppId.CheckedChanged += new System.EventHandler(this.ourAppId_CheckedChanged);
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(9, 13);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(117, 13);
+            this.label.TabIndex = 26;
+            this.label.Text = "Choose App ID To Use";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 363);
+            this.Controls.Add(this.label);
+            this.Controls.Add(this.ourAppId);
+            this.Controls.Add(this.classAppId);
             this.Controls.Add(this.friendsBirthdays);
             this.Controls.Add(this.buttonGetBirthdays);
             this.Controls.Add(this.buttonCreateRandomPost);
@@ -261,6 +298,9 @@
         private System.Windows.Forms.Button buttonCreateRandomPost;
         private System.Windows.Forms.Button buttonGetBirthdays;
         private System.Windows.Forms.ListBox friendsBirthdays;
+        private System.Windows.Forms.CheckBox classAppId;
+        private System.Windows.Forms.CheckBox ourAppId;
+        private System.Windows.Forms.Label label;
     }
 }
 
