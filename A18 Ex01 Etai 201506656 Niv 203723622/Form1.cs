@@ -181,7 +181,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             }
         }
 
-
         private void FetchPosts()
         {
             foreach (Post post in m_LoggedInUser.Posts)
