@@ -258,25 +258,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             }
         }
 
-        private void buttonInsertImagePost_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
-            if (result == DialogResult.OK) // Test result.
-            {
-                string file = openFileDialog1.FileName;
-                try
-                {
-                    //string text = File.ReadAllText(file);
-                    //size = text.Length;
-                    MessageBox.Show(file);
-                }
-                catch (Exception)
-                {
-                }
-            }
-        }
-
         private void FetchPages()
         {
             pages.Items.Clear();
@@ -304,15 +285,9 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             MessageBox.Show("Status Posted! ID: " + postedStatus.Id + "the post is: " + randomPost);
         }
         
-
         private void ButtonFetchPosts_Click(object sender, EventArgs e)
         {
             FetchPosts();
-        }
-
-        private void TextBoxPostText_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void PostsAndLikes_SelectedIndexChanged(object sender, EventArgs e)

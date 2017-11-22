@@ -101,7 +101,7 @@
             this.textBoxPostText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxPostText.Size = new System.Drawing.Size(268, 23);
             this.textBoxPostText.TabIndex = 8;
-            this.textBoxPostText.TextChanged += new System.EventHandler(this.TextBoxPostText_TextChanged);
+            
             // 
             // buttonPost
             // 
