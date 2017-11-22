@@ -78,7 +78,7 @@
             this.buttonLogout.TabIndex = 5;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
-            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+            this.buttonLogout.Click += new System.EventHandler(this.ButtonLogout_Click);
             // 
             // buttonLogin
             // 
@@ -89,7 +89,7 @@
             this.buttonLogin.TabIndex = 4;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
-            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            this.buttonLogin.Click += new System.EventHandler(this.ButtonLogin_Click);
             // 
             // textBoxPostText
             // 
@@ -101,7 +101,7 @@
             this.textBoxPostText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxPostText.Size = new System.Drawing.Size(268, 23);
             this.textBoxPostText.TabIndex = 8;
-            this.textBoxPostText.TextChanged += new System.EventHandler(this.textBoxPostText_TextChanged);
+            this.textBoxPostText.TextChanged += new System.EventHandler(this.TextBoxPostText_TextChanged);
             // 
             // buttonPost
             // 
@@ -111,7 +111,7 @@
             this.buttonPost.TabIndex = 9;
             this.buttonPost.Text = "Post";
             this.buttonPost.UseVisualStyleBackColor = true;
-            this.buttonPost.Click += new System.EventHandler(this.buttonPost_Click);
+            this.buttonPost.Click += new System.EventHandler(this.ButtonPost_Click);
             // 
             // buttonFetchPosts
             // 
@@ -121,7 +121,7 @@
             this.buttonFetchPosts.TabIndex = 11;
             this.buttonFetchPosts.Text = "Fetch Posts ";
             this.buttonFetchPosts.UseVisualStyleBackColor = true;
-            this.buttonFetchPosts.Click += new System.EventHandler(this.buttonFetchPosts_Click);
+            this.buttonFetchPosts.Click += new System.EventHandler(this.ButtonFetchPosts_Click);
             // 
             // postsAndLikes
             // 
@@ -130,7 +130,7 @@
             this.postsAndLikes.Name = "postsAndLikes";
             this.postsAndLikes.Size = new System.Drawing.Size(187, 199);
             this.postsAndLikes.TabIndex = 12;
-            this.postsAndLikes.SelectedIndexChanged += new System.EventHandler(this.postsAndLikes_SelectedIndexChanged);
+            this.postsAndLikes.SelectedIndexChanged += new System.EventHandler(this.PostsAndLikes_SelectedIndexChanged);
             // 
             // buttonFetchFriends
             // 
@@ -140,7 +140,7 @@
             this.buttonFetchFriends.TabIndex = 13;
             this.buttonFetchFriends.Text = "Fetch Friends";
             this.buttonFetchFriends.UseVisualStyleBackColor = true;
-            this.buttonFetchFriends.Click += new System.EventHandler(this.buttonFetchFriends_Click);
+            this.buttonFetchFriends.Click += new System.EventHandler(this.ButtonFetchFriends_Click);
             // 
             // lsitOfFriends
             // 
@@ -149,7 +149,7 @@
             this.lsitOfFriends.Name = "lsitOfFriends";
             this.lsitOfFriends.Size = new System.Drawing.Size(120, 199);
             this.lsitOfFriends.TabIndex = 14;
-            this.lsitOfFriends.SelectedIndexChanged += new System.EventHandler(this.lsitOfFriends_SelectedIndexChanged);
+            this.lsitOfFriends.SelectedIndexChanged += new System.EventHandler(this.ListOfFriends_SelectedIndexChanged);
             // 
             // buttonFetchLikedEvents
             // 
@@ -159,7 +159,7 @@
             this.buttonFetchLikedEvents.TabIndex = 17;
             this.buttonFetchLikedEvents.Text = "Fetch Events";
             this.buttonFetchLikedEvents.UseVisualStyleBackColor = true;
-            this.buttonFetchLikedEvents.Click += new System.EventHandler(this.buttonFetchLikedEvents_Click);
+            this.buttonFetchLikedEvents.Click += new System.EventHandler(this.ButtonFetchLikedEvents_Click);
             // 
             // ListOfEvents
             // 
@@ -177,7 +177,7 @@
             this.buttonFetchPages.TabIndex = 19;
             this.buttonFetchPages.Text = "Fetch Pages";
             this.buttonFetchPages.UseVisualStyleBackColor = true;
-            this.buttonFetchPages.Click += new System.EventHandler(this.buttonFetchPages_Click);
+            this.buttonFetchPages.Click += new System.EventHandler(this.ButtonFetchPages_Click);
             // 
             // pages
             // 
@@ -195,7 +195,7 @@
             this.buttonCreateRandomPost.TabIndex = 21;
             this.buttonCreateRandomPost.Text = "Create Random \"Pigoa\" Facebook";
             this.buttonCreateRandomPost.UseVisualStyleBackColor = true;
-            this.buttonCreateRandomPost.Click += new System.EventHandler(this.buttonCreateRandomPost_Click);
+            this.buttonCreateRandomPost.Click += new System.EventHandler(this.ButtonCreateRandomPost_Click);
             // 
             // buttonGetBirthdays
             // 
@@ -205,7 +205,7 @@
             this.buttonGetBirthdays.TabIndex = 22;
             this.buttonGetBirthdays.Text = "Remind me friends birthdays!";
             this.buttonGetBirthdays.UseVisualStyleBackColor = true;
-            this.buttonGetBirthdays.Click += new System.EventHandler(this.buttonGetBirthdays_Click);
+            this.buttonGetBirthdays.Click += new System.EventHandler(this.ButtonGetBirthdays_Click);
             // 
             // friendsBirthdays
             // 
@@ -224,7 +224,7 @@
             this.classAppId.TabIndex = 24;
             this.classAppId.Text = "Class App ID";
             this.classAppId.UseVisualStyleBackColor = true;
-            this.classAppId.CheckedChanged += new System.EventHandler(this.classAppId_CheckedChanged);
+            this.classAppId.CheckedChanged += new System.EventHandler(this.ClassAppId_CheckedChanged);
             // 
             // ourAppId
             // 
@@ -235,7 +235,7 @@
             this.ourAppId.TabIndex = 25;
             this.ourAppId.Text = "Our App ID";
             this.ourAppId.UseVisualStyleBackColor = true;
-            this.ourAppId.CheckedChanged += new System.EventHandler(this.ourAppId_CheckedChanged);
+            this.ourAppId.CheckedChanged += new System.EventHandler(this.OurAppId_CheckedChanged);
             // 
             // label
             // 

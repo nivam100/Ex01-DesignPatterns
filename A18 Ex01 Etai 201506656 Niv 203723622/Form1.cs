@@ -76,10 +76,10 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            loginAndInit();
+            LoginAndInit();
         }
 
-        private void loginAndInit()
+        private void LoginAndInit()
         {
             /// Owner: design.patterns
 
@@ -131,7 +131,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                 if (!string.IsNullOrEmpty(result.AccessToken))
                 {
                     m_LoggedInUser = result.LoggedInUser;
-                    fetchUserInfo();
+                    FetchUserInfo();
                 }
                 else
                 {
@@ -146,14 +146,14 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
            
         }
 
-        private void fetchUserInfo()
+        private void FetchUserInfo()
         {
             string FirstAndLastname = String.Format("{0} {1}", this.m_LoggedInUser.FirstName, m_LoggedInUser.LastName);
             this.labelUsername.Text = FirstAndLastname;
             this.pictureBoxProfile.ImageLocation = this.m_LoggedInUser.PictureSmallURL;
         }
 
-        private void buttonLogout_Click(object sender, EventArgs e)
+        private void ButtonLogout_Click(object sender, EventArgs e)
         {
             Action logoutMessage = OnSuccessfullLogout;
             FacebookService.Logout(logoutMessage);
@@ -164,12 +164,12 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             MessageBox.Show("Successfull Logout");
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void ButtonLogin_Click(object sender, EventArgs e)
         {
-            loginAndInit();
+            LoginAndInit();
         }
 
-        private void buttonPost_Click(object sender, EventArgs e)
+        private void ButtonPost_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(this.textBoxPostText.Text))
             {
@@ -182,7 +182,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         }
 
 
-        private void fetchPosts()
+        private void FetchPosts()
         {
             foreach (Post post in m_LoggedInUser.Posts)
             {
@@ -305,57 +305,57 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         }
         
 
-        private void buttonFetchPosts_Click(object sender, EventArgs e)
+        private void ButtonFetchPosts_Click(object sender, EventArgs e)
         {
-            fetchPosts();
+            FetchPosts();
         }
 
-        private void textBoxPostText_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void postsAndLikes_SelectedIndexChanged(object sender, EventArgs e)
+        private void TextBoxPostText_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonFetchFriends_Click(object sender, EventArgs e)
+        private void PostsAndLikes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonFetchFriends_Click(object sender, EventArgs e)
         {
             FetchFriends(false);
         }
 
-        private void lsitOfFriends_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListOfFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonFetchLikedEvents_Click(object sender, EventArgs e)
+        private void ButtonFetchLikedEvents_Click(object sender, EventArgs e)
         {
             FetchEvents();
         }
 
-        private void buttonFetchPages_Click(object sender, EventArgs e)
+        private void ButtonFetchPages_Click(object sender, EventArgs e)
         {
             FetchPages();
         }
 
-        private void buttonCreateRandomPost_Click(object sender, EventArgs e)
+        private void ButtonCreateRandomPost_Click(object sender, EventArgs e)
         {
             CreateRandomPost();
         }
 
-        private void buttonGetBirthdays_Click(object sender, EventArgs e)
+        private void ButtonGetBirthdays_Click(object sender, EventArgs e)
         {
             FetchFriends(true);
         }
 
-        private void classAppId_CheckedChanged(object sender, EventArgs e)
+        private void ClassAppId_CheckedChanged(object sender, EventArgs e)
         {
             m_AppID = "1450160541956417";
         }
 
-        private void ourAppId_CheckedChanged(object sender, EventArgs e)
+        private void OurAppId_CheckedChanged(object sender, EventArgs e)
         {
             m_AppID = "124318548263284";
         }
