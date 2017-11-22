@@ -17,20 +17,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         private User m_UserTest;
         private string m_AppID;
 
-        public Form1()
-        {
-            InitializeComponent();
-            FacebookWrapper.FacebookService.s_CollectionLimit = 200;
-            FacebookWrapper.FacebookService.s_FbApiVersion = 2.8f;
-        }
-
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
-            loginAndInit();
-        }
-
-        enum eNoun1
+        private enum eNoun1
         {
             Brown_Eyes,
             Bus_Driver,
@@ -41,7 +28,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             Lazy_Dog
         }
 
-        enum eNoun2
+        private enum eNoun2
         {
             Hairy,
             Pervert,
@@ -52,20 +39,20 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             Shaky
         }
 
-        enum eMember
+        private enum eMember
         {
-           Friend,
-           Partner,
-           Boss,
-           Teacher,
-           Grandmother,
-           Girlfriend,
-           Brother,
-           Sister,
-           Mom
+            Friend,
+            Partner,
+            Boss,
+            Teacher,
+            Grandmother,
+            Girlfriend,
+            Brother,
+            Sister,
+            Mom
         }
 
-        enum eProffession
+        private enum eProffession
         {
             Entrepreneur,
             Coder,
@@ -77,6 +64,19 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             Chef,
             Player,
             Translator
+        }
+
+        public Form1()
+        {
+            InitializeComponent();
+            FacebookWrapper.FacebookService.s_CollectionLimit = 200;
+            FacebookWrapper.FacebookService.s_FbApiVersion = 2.8f;
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            loginAndInit();
         }
 
         private void loginAndInit()
