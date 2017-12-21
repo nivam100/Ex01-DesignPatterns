@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelUsername = new System.Windows.Forms.Label();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.buttonLogout = new System.Windows.Forms.Button();
@@ -37,7 +38,7 @@
             this.buttonFetchPosts = new System.Windows.Forms.Button();
             this.postsAndLikes = new System.Windows.Forms.ListBox();
             this.buttonFetchFriends = new System.Windows.Forms.Button();
-            this.lsitOfFriends = new System.Windows.Forms.ListBox();
+            this.listOfFriends = new System.Windows.Forms.ListBox();
             this.buttonFetchLikedEvents = new System.Windows.Forms.Button();
             this.ListOfEvents = new System.Windows.Forms.ListBox();
             this.buttonFetchPages = new System.Windows.Forms.Button();
@@ -48,7 +49,9 @@
             this.classAppId = new System.Windows.Forms.CheckBox();
             this.ourAppId = new System.Windows.Forms.CheckBox();
             this.label = new System.Windows.Forms.Label();
+            this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // labelUsername
@@ -101,7 +104,6 @@
             this.textBoxPostText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxPostText.Size = new System.Drawing.Size(268, 23);
             this.textBoxPostText.TabIndex = 8;
-            
             // 
             // buttonPost
             // 
@@ -130,7 +132,7 @@
             this.postsAndLikes.Name = "postsAndLikes";
             this.postsAndLikes.Size = new System.Drawing.Size(187, 199);
             this.postsAndLikes.TabIndex = 12;
-            this.postsAndLikes.SelectedIndexChanged += new System.EventHandler(this.PostsAndLikes_SelectedIndexChanged);
+            this.postsAndLikes.DoubleClick += new System.EventHandler(this.postsAndLikes_DoubleClick);
             // 
             // buttonFetchFriends
             // 
@@ -142,14 +144,14 @@
             this.buttonFetchFriends.UseVisualStyleBackColor = true;
             this.buttonFetchFriends.Click += new System.EventHandler(this.ButtonFetchFriends_Click);
             // 
-            // lsitOfFriends
+            // listOfFriends
             // 
-            this.lsitOfFriends.FormattingEnabled = true;
-            this.lsitOfFriends.Location = new System.Drawing.Point(224, 141);
-            this.lsitOfFriends.Name = "lsitOfFriends";
-            this.lsitOfFriends.Size = new System.Drawing.Size(120, 199);
-            this.lsitOfFriends.TabIndex = 14;
-            this.lsitOfFriends.SelectedIndexChanged += new System.EventHandler(this.ListOfFriends_SelectedIndexChanged);
+            this.listOfFriends.FormattingEnabled = true;
+            this.listOfFriends.Location = new System.Drawing.Point(224, 141);
+            this.listOfFriends.Name = "listOfFriends";
+            this.listOfFriends.Size = new System.Drawing.Size(120, 199);
+            this.listOfFriends.TabIndex = 14;
+            this.listOfFriends.SelectedIndexChanged += new System.EventHandler(this.ListOfFriends_SelectedIndexChanged);
             // 
             // buttonFetchLikedEvents
             // 
@@ -212,7 +214,7 @@
             this.friendsBirthdays.FormattingEnabled = true;
             this.friendsBirthdays.Location = new System.Drawing.Point(692, 141);
             this.friendsBirthdays.Name = "friendsBirthdays";
-            this.friendsBirthdays.Size = new System.Drawing.Size(120, 199);
+            this.friendsBirthdays.Size = new System.Drawing.Size(215, 199);
             this.friendsBirthdays.TabIndex = 23;
             // 
             // classAppId
@@ -246,11 +248,15 @@
             this.label.TabIndex = 26;
             this.label.Text = "Choose App ID To Use";
             // 
+            // postBindingSource
+            // 
+            this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 363);
+            this.ClientSize = new System.Drawing.Size(1078, 363);
             this.Controls.Add(this.label);
             this.Controls.Add(this.ourAppId);
             this.Controls.Add(this.classAppId);
@@ -261,7 +267,7 @@
             this.Controls.Add(this.buttonFetchPages);
             this.Controls.Add(this.ListOfEvents);
             this.Controls.Add(this.buttonFetchLikedEvents);
-            this.Controls.Add(this.lsitOfFriends);
+            this.Controls.Add(this.listOfFriends);
             this.Controls.Add(this.buttonFetchFriends);
             this.Controls.Add(this.postsAndLikes);
             this.Controls.Add(this.buttonFetchPosts);
@@ -274,6 +280,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,7 +297,7 @@
         private System.Windows.Forms.Button buttonFetchPosts;
         private System.Windows.Forms.ListBox postsAndLikes;
         private System.Windows.Forms.Button buttonFetchFriends;
-        private System.Windows.Forms.ListBox lsitOfFriends;
+        private System.Windows.Forms.ListBox listOfFriends;
         private System.Windows.Forms.Button buttonFetchLikedEvents;
         private System.Windows.Forms.ListBox ListOfEvents;
         private System.Windows.Forms.Button buttonFetchPages;
@@ -301,6 +308,7 @@
         private System.Windows.Forms.CheckBox classAppId;
         private System.Windows.Forms.CheckBox ourAppId;
         private System.Windows.Forms.Label label;
+        private System.Windows.Forms.BindingSource postBindingSource;
     }
 }
 

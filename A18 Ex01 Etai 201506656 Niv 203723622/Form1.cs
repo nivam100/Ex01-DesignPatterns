@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace A18_Ex01_Etai_201506656_Niv_203723622
@@ -148,9 +149,10 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void FetchUserInfo()
         {
+            new Thread(() => this.pictureBoxProfile.ImageLocation = this.m_LoggedInUser.PictureSmallURL).Start();
+            //this.pictureBoxProfile.ImageLocation = this.m_LoggedInUser.PictureSmallURL;
             string FirstAndLastname = String.Format("{0} {1}", this.m_LoggedInUser.FirstName, m_LoggedInUser.LastName);
             this.labelUsername.Text = FirstAndLastname;
-            this.pictureBoxProfile.ImageLocation = this.m_LoggedInUser.PictureSmallURL;
         }
 
         private void ButtonLogout_Click(object sender, EventArgs e)
@@ -187,15 +189,18 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             {
                 if (post.Message != null)
                 {
-                    postsAndLikes.Items.Add(post.Message); 
+                    postsAndLikes.Invoke(new Action(() => postsAndLikes.Items.Add(post.Message)));
+                    //postsAndLikes.Items.Add(post.Message); 
                 }
                 else if (post.Caption != null)
                 {
-                    postsAndLikes.Items.Add(post.Caption);
+                    postsAndLikes.Invoke(new Action(() => postsAndLikes.Items.Add(post.Caption)));
+                    //postsAndLikes.Items.Add(post.Caption);
                 }
                 else
                 {
-                    postsAndLikes.Items.Add(string.Format("[{0}]", post.Type));
+                    postsAndLikes.Invoke(new Action(() => postsAndLikes.Items.Add(string.Format("[{0}]", post.Type))));
+                    //postsAndLikes.Items.Add(string.Format("[{0}]", post.Type));
                 }
             }
 
@@ -207,28 +212,42 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void FetchFriends(bool i_CheckBirthday)
         {
-            lsitOfFriends.Items.Clear();
-            lsitOfFriends.DisplayMember = "Name";
+            if (i_CheckBirthday)
+            {
+                friendsBirthdays.Invoke(new Action(friendsBirthdays.Items.Clear));
+            }
+            else
+            {
+                listOfFriends.Invoke(new Action(listOfFriends.Items.Clear));
+            }
+            listOfFriends.Invoke(new Action(() => listOfFriends.DisplayMember = "Name"));
+           
             int counter = 0;
             foreach (User friend in m_LoggedInUser.Friends)
             {
                 if (!i_CheckBirthday)
                 {
-                    lsitOfFriends.Items.Add(friend);
+                    listOfFriends.Invoke(new Action(() => listOfFriends.Items.Add(friend)));
+                    //listOfFriends.Items.Add(friend);
                 }
                 else
                 {
                     try
                     {
-                        friendsBirthdays.Items.Add(friend.FirstName + " " + friend.LastName + ": " + friend.Birthday.ToString());
-                        counter++;
+                        if(friend.Birthday != null)
+                        {
+                            string fullnameAndBirthday = String.Format("{0} {1}: {2}", friend.FirstName, friend.LastName, friend.Birthday);
+                            friendsBirthdays.Invoke(new Action(() => friendsBirthdays.Items.Add(fullnameAndBirthday)));
+
+                            counter++;
+                        }
                     }
                     catch (Exception e)
                     {
 
                     }
                 }
-                friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
+                //friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
             }
 
             if(counter == 0 && i_CheckBirthday)
@@ -244,11 +263,11 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void FetchEvents()
         {
-            ListOfEvents.Items.Clear();
-            ListOfEvents.DisplayMember = "Name";
+            ListOfEvents.Invoke(new Action(ListOfEvents.Items.Clear));
+            ListOfEvents.Invoke(new Action(() => ListOfEvents.DisplayMember = "Name"));
             foreach (Event fbEvent in m_LoggedInUser.Events)
             {
-                ListOfEvents.Items.Add(fbEvent);
+                ListOfEvents.Invoke(new Action(() => ListOfEvents.Items.Add(fbEvent)));
             }
 
             if (m_LoggedInUser.Events.Count == 0)
@@ -259,12 +278,12 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void FetchPages()
         {
-            pages.Items.Clear();
-            pages.DisplayMember = "Name";
+            pages.Invoke(new Action(pages.Items.Clear));
+            pages.Invoke(new Action(() => pages.DisplayMember = "Name"));
         
             foreach (Page page in m_LoggedInUser.LikedPages)
             {
-                pages.Items.Add(page);
+                pages.Invoke(new Action(() => pages.Items.Add(page)));
             }
 
             if (m_LoggedInUser.LikedPages.Count == 0)
@@ -286,17 +305,13 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         
         private void ButtonFetchPosts_Click(object sender, EventArgs e)
         {
-            FetchPosts();
-        }
-
-        private void PostsAndLikes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            postBindingSource.DataSource = m_LoggedInUser.Events;
+            new Thread(FetchPosts).Start();
         }
 
         private void ButtonFetchFriends_Click(object sender, EventArgs e)
         {
-            FetchFriends(false);
+            new Thread(()=>FetchFriends(false)).Start();
         }
 
         private void ListOfFriends_SelectedIndexChanged(object sender, EventArgs e)
@@ -306,12 +321,12 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void ButtonFetchLikedEvents_Click(object sender, EventArgs e)
         {
-            FetchEvents();
+            new Thread(FetchEvents).Start();
         }
 
         private void ButtonFetchPages_Click(object sender, EventArgs e)
         {
-            FetchPages();
+            new Thread(FetchPages).Start();
         }
 
         private void ButtonCreateRandomPost_Click(object sender, EventArgs e)
@@ -321,7 +336,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void ButtonGetBirthdays_Click(object sender, EventArgs e)
         {
-            FetchFriends(true);
+            new Thread(() => FetchFriends(true)).Start();
         }
 
         private void ClassAppId_CheckedChanged(object sender, EventArgs e)
@@ -333,5 +348,12 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         {
             m_AppID = "124318548263284";
         }
+
+        private void postsAndLikes_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
