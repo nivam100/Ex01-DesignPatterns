@@ -50,8 +50,14 @@
             this.ourAppId = new System.Windows.Forms.CheckBox();
             this.label = new System.Windows.Forms.Label();
             this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // labelUsername
@@ -127,6 +133,8 @@
             // 
             // postsAndLikes
             // 
+            this.postsAndLikes.DataSource = this.postBindingSource;
+            this.postsAndLikes.DisplayMember = "Message";
             this.postsAndLikes.FormattingEnabled = true;
             this.postsAndLikes.Location = new System.Drawing.Point(12, 141);
             this.postsAndLikes.Name = "postsAndLikes";
@@ -146,6 +154,8 @@
             // 
             // listOfFriends
             // 
+            this.listOfFriends.DataSource = this.userBindingSource;
+            this.listOfFriends.DisplayMember = "Name";
             this.listOfFriends.FormattingEnabled = true;
             this.listOfFriends.Location = new System.Drawing.Point(224, 141);
             this.listOfFriends.Name = "listOfFriends";
@@ -165,6 +175,8 @@
             // 
             // ListOfEvents
             // 
+            this.ListOfEvents.DataSource = this.eventBindingSource;
+            this.ListOfEvents.DisplayMember = "Name";
             this.ListOfEvents.FormattingEnabled = true;
             this.ListOfEvents.Location = new System.Drawing.Point(386, 141);
             this.ListOfEvents.Name = "ListOfEvents";
@@ -183,6 +195,8 @@
             // 
             // pages
             // 
+            this.pages.DataSource = this.pageBindingSource;
+            this.pages.DisplayMember = "Name";
             this.pages.FormattingEnabled = true;
             this.pages.Location = new System.Drawing.Point(542, 141);
             this.pages.Name = "pages";
@@ -252,6 +266,18 @@
             // 
             this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
             // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.User);
+            // 
+            // eventBindingSource
+            // 
+            this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
+            // 
+            // pageBindingSource
+            // 
+            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,6 +307,9 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pageBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,6 +338,9 @@
         private System.Windows.Forms.CheckBox ourAppId;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.BindingSource postBindingSource;
+        private System.Windows.Forms.BindingSource userBindingSource;
+        private System.Windows.Forms.BindingSource eventBindingSource;
+        private System.Windows.Forms.BindingSource pageBindingSource;
     }
 }
 
