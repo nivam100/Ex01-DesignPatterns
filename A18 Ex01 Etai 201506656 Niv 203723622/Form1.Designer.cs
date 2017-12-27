@@ -37,22 +37,22 @@
             this.buttonPost = new System.Windows.Forms.Button();
             this.buttonFetchPosts = new System.Windows.Forms.Button();
             this.postsAndLikes = new System.Windows.Forms.ListBox();
+            this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonFetchFriends = new System.Windows.Forms.Button();
             this.listOfFriends = new System.Windows.Forms.ListBox();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonFetchLikedEvents = new System.Windows.Forms.Button();
             this.ListOfEvents = new System.Windows.Forms.ListBox();
+            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonFetchPages = new System.Windows.Forms.Button();
             this.pages = new System.Windows.Forms.ListBox();
+            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonCreateRandomPost = new System.Windows.Forms.Button();
             this.buttonGetBirthdays = new System.Windows.Forms.Button();
             this.friendsBirthdays = new System.Windows.Forms.ListBox();
             this.classAppId = new System.Windows.Forms.CheckBox();
             this.ourAppId = new System.Windows.Forms.CheckBox();
             this.label = new System.Windows.Forms.Label();
-            this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eventBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
@@ -142,6 +142,10 @@
             this.postsAndLikes.TabIndex = 12;
             this.postsAndLikes.DoubleClick += new System.EventHandler(this.postsAndLikes_DoubleClick);
             // 
+            // postBindingSource
+            // 
+            this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
+            // 
             // buttonFetchFriends
             // 
             this.buttonFetchFriends.Location = new System.Drawing.Point(224, 97);
@@ -162,6 +166,11 @@
             this.listOfFriends.Size = new System.Drawing.Size(120, 199);
             this.listOfFriends.TabIndex = 14;
             this.listOfFriends.SelectedIndexChanged += new System.EventHandler(this.ListOfFriends_SelectedIndexChanged);
+            this.listOfFriends.DoubleClick += new System.EventHandler(this.listOfFriends_DoubleClick);
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.User);
             // 
             // buttonFetchLikedEvents
             // 
@@ -182,6 +191,11 @@
             this.ListOfEvents.Name = "ListOfEvents";
             this.ListOfEvents.Size = new System.Drawing.Size(120, 199);
             this.ListOfEvents.TabIndex = 18;
+            this.ListOfEvents.DoubleClick += new System.EventHandler(this.ListOfEvents_DoubleClick);
+            // 
+            // eventBindingSource
+            // 
+            this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
             // 
             // buttonFetchPages
             // 
@@ -202,6 +216,11 @@
             this.pages.Name = "pages";
             this.pages.Size = new System.Drawing.Size(120, 199);
             this.pages.TabIndex = 20;
+            this.pages.DoubleClick += new System.EventHandler(this.pages_DoubleClick);
+            // 
+            // pageBindingSource
+            // 
+            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
             // 
             // buttonCreateRandomPost
             // 
@@ -261,22 +280,6 @@
             this.label.Size = new System.Drawing.Size(117, 13);
             this.label.TabIndex = 26;
             this.label.Text = "Choose App ID To Use";
-            // 
-            // postBindingSource
-            // 
-            this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.User);
-            // 
-            // eventBindingSource
-            // 
-            this.eventBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Event);
-            // 
-            // pageBindingSource
-            // 
-            this.pageBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Page);
             // 
             // Form1
             // 

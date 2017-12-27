@@ -17,6 +17,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         private User m_LoggedInUser;
         private User m_UserTest;
         private string m_AppID;
+        
 
         private enum eNoun1
         {
@@ -150,7 +151,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         private void FetchUserInfo()
         {
             new Thread(() => this.pictureBoxProfile.ImageLocation = this.m_LoggedInUser.PictureSmallURL).Start();
-            //this.pictureBoxProfile.ImageLocation = this.m_LoggedInUser.PictureSmallURL;
             string FirstAndLastname = String.Format("{0} {1}", this.m_LoggedInUser.FirstName, m_LoggedInUser.LastName);
             this.labelUsername.Text = FirstAndLastname;
         }
@@ -185,117 +185,22 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void FetchPosts()
         {
-            // todo postsAndLikes.Invoke(new Action(() => postsAndLikes.DisplayMember = "Message"));
             Invoke(new Action(() => postBindingSource.DataSource = m_LoggedInUser.Posts));
-            //foreach (Post post in m_LoggedInUser.Posts)
-            //{
-            //    if (post.Message != null)
-            //    {
-            //        postsAndLikes.Invoke(new Action(() => postsAndLikes.Items.Add(post.Message)));
-            //        //postsAndLikes.Items.Add(post.Message); 
-                    
-            //    }
-            //    else if (post.Caption != null)
-            //    {
-            //        postsAndLikes.Invoke(new Action(() => postsAndLikes.Items.Add(post.Caption)));
-            //        //postsAndLikes.Items.Add(post.Caption);
-            //    }
-            //    else
-            //    {
-            //        postsAndLikes.Invoke(new Action(() => postsAndLikes.Items.Add(string.Format("[{0}]", post.Type))));
-            //        //postsAndLikes.Items.Add(string.Format("[{0}]", post.Type));
-            //    }
-            //}
-
-            //if (m_LoggedInUser.Posts.Count == 0)
-            //{
-            //    MessageBox.Show("No Posts to retrieve :(");
-            //}
         }
 
         private void FetchFriends(bool i_CheckBirthday)
         {
             Invoke(new Action(() => userBindingSource.DataSource = m_LoggedInUser.Friends));
-            //if (i_CheckBirthday)
-            //{
-            //    friendsBirthdays.Invoke(new Action(friendsBirthdays.Items.Clear));
-            //}
-            //else
-            //{
-            //    listOfFriends.Invoke(new Action(listOfFriends.Items.Clear));
-            //}
-            //listOfFriends.Invoke(new Action(() => listOfFriends.DisplayMember = "Name"));
-            //int counter = 0;
-            //foreach (User friend in m_LoggedInUser.Friends)
-            //{
-            //    if (!i_CheckBirthday)
-            //    {
-            //        listOfFriends.Invoke(new Action(() => listOfFriends.Items.Add(friend)));
-            //        //listOfFriends.Items.Add(friend);
-            //    }
-            //    else
-            //    {
-            //        try
-            //        {
-            //            if(friend.Birthday != null)
-            //            {
-            //                string fullnameAndBirthday = String.Format("{0} {1}: {2}", friend.FirstName, friend.LastName, friend.Birthday);
-            //                friendsBirthdays.Invoke(new Action(() => friendsBirthdays.Items.Add(fullnameAndBirthday)));
-
-            //                counter++;
-            //            }
-            //        }
-            //        catch (Exception e)
-            //        {
-
-            //        }
-            //    }
-            //    //friend.ReFetch(DynamicWrapper.eLoadOptions.Full);
-            //}
-
-            //if(counter == 0 && i_CheckBirthday)
-            //{
-            //    MessageBox.Show("No Birthdays to retrieve :(");
-            //}
-
-            //if (m_LoggedInUser.Friends.Count == 0)
-            //{
-            //    MessageBox.Show("No Friends to retrieve :(");
-            //}
         }
 
         private void FetchEvents()
         {
             Invoke(new Action(() => eventBindingSource.DataSource = m_LoggedInUser.Events));
-            //ListOfEvents.Invoke(new Action(ListOfEvents.Items.Clear));
-            //ListOfEvents.Invoke(new Action(() => ListOfEvents.DisplayMember = "Name"));
-            //foreach (Event fbEvent in m_LoggedInUser.Events)
-            //{
-            //    ListOfEvents.Invoke(new Action(() => ListOfEvents.Items.Add(fbEvent)));
-            //}
-
-            //if (m_LoggedInUser.Events.Count == 0)
-            //{
-            //    MessageBox.Show("No Events to retrieve :(");
-            //}
         }
 
         private void FetchPages()
         {
             Invoke(new Action(() => pageBindingSource.DataSource = m_LoggedInUser.LikedPages));
-
-            //pages.Invoke(new Action(pages.Items.Clear));
-            //pages.Invoke(new Action(() => pages.DisplayMember = "Name"));
-
-            //foreach (Page page in m_LoggedInUser.LikedPages)
-            //{
-            //    pages.Invoke(new Action(() => pages.Items.Add(page)));
-            //}
-
-            //if (m_LoggedInUser.LikedPages.Count == 0)
-            //{
-            //    MessageBox.Show("No liked pages to retrieve :(");
-            //}
         }
 
         private void CreateRandomPost()
@@ -357,9 +262,40 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void postsAndLikes_DoubleClick(object sender, EventArgs e)
         {
-            
+            MoreInfoPostsAndLikes moreInfo = MoreInfoFactory.CreateMoreInfoWindow(postsAndLikes.SelectedItem) as MoreInfoPostsAndLikes;
+            Form2 moreInfoForm = new Form2();
+            foreach(string str in moreInfo.CreateMoreInfoText())
+            {
+                moreInfoForm.more.Items.Add(str);
+            } 
+            moreInfoForm.ShowDialog();
         }
 
-       
+        private void listOfFriends_DoubleClick(object sender, EventArgs e)
+        {
+            MoreInfoListOfFriends moreInfo = MoreInfoFactory.CreateMoreInfoWindow(listOfFriends.SelectedItem) as MoreInfoListOfFriends;
+            Form2 moreInfoForm = new Form2();
+            foreach (string str in moreInfo.CreateMoreInfoText())
+            {
+                moreInfoForm.more.Items.Add(str);
+            }
+            moreInfoForm.ShowDialog();
+        }
+
+        private void ListOfEvents_DoubleClick(object sender, EventArgs e)
+        {
+            MoreInfoListOfEvents moreInfo = MoreInfoFactory.CreateMoreInfoWindow(ListOfEvents.SelectedItem) as MoreInfoListOfEvents;
+            Form2 moreInfoForm = new Form2();
+            foreach (string str in moreInfo.CreateMoreInfoText())
+            {
+                moreInfoForm.more.Items.Add(str);
+            }
+            moreInfoForm.ShowDialog();
+        }
+
+        private void pages_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
