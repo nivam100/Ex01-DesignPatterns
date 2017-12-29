@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MatchFinderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MatchFinderForm.Designer.cs">
+      <DependentUpon>MatchFinderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MoreInfoFactory.cs" />
     <Compile Include="MoreInfoListOfEvents.cs" />
     <Compile Include="MoreInfoListOfFriends.cs" />
@@ -70,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatchFinderForm.resx">
+      <DependentUpon>MatchFinderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

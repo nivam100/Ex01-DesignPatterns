@@ -295,7 +295,22 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void pages_DoubleClick(object sender, EventArgs e)
         {
+            
+        }
 
+        private void buttonRefreshAll_Click(object sender, EventArgs e)
+        {
+            new Thread(FetchEvents).Start();
+            new Thread(()=> FetchFriends(false)).Start();
+            new Thread(FetchPages).Start();
+            new Thread(FetchPosts).Start();
+
+        }
+
+        private void buttonFindMatch_Click(object sender, EventArgs e)
+        {
+            MatchFinderForm matchFinder = new MatchFinderForm(m_LoggedInUser);
+            matchFinder.ShowDialog();
         }
     }
 }
