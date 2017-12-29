@@ -10,15 +10,21 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
     public class MoreInfoPostsAndLikes : MoreInfo
     {
         Post m_Post;
-        List<string> m_ListForListBox; 
-    
+        List<string> m_ListForListBox;
+        public Form2 m_MoreInfoForm;
+
+        
+
         public MoreInfoPostsAndLikes(object facebookObj) : base(facebookObj)
         {
             this.m_Post = facebookObj as Post;
+            this.m_MoreInfoForm = new Form2();
             m_ListForListBox = new List<string>();
+            this.CreateMoreInfoText();
+            this.CreateMoreInfoForm();
         }
 
-        public override List<string> CreateMoreInfoText()
+        public override void CreateMoreInfoText()
         {
             bool beenHere = false;
             m_ListForListBox.Add("Date and time of the post:");
@@ -41,7 +47,14 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             {
                 m_ListForListBox.Add("No Comments");
             }
-            return m_ListForListBox;
+            
+        }
+        public override void CreateMoreInfoForm()
+        {
+            foreach (string str in m_ListForListBox)
+            {
+                m_MoreInfoForm.more.Items.Add(str);
+            }
         }
     }
 }

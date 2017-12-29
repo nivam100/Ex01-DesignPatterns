@@ -11,14 +11,18 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
     {
         Event m_Event;
         List<string> m_ListForListBox;
+        public Form2 m_MoreInfoForm;
 
         public MoreInfoListOfEvents(object facebookObj) : base(facebookObj)
         {
             this.m_Event = facebookObj as Event;
             m_ListForListBox = new List<string>();
+            this.m_MoreInfoForm = new Form2();
+            this.CreateMoreInfoText();
+            this.CreateMoreInfoForm();
         }
 
-        public override List<string> CreateMoreInfoText()
+        public override void CreateMoreInfoText()
         {
             m_ListForListBox.Add("Name Of The Event:");
             m_ListForListBox.Add(Environment.NewLine);
@@ -38,7 +42,15 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                 m_ListForListBox.Add(Environment.NewLine);
                 m_ListForListBox.Add(m_Event.Location);
             }
-            return m_ListForListBox;
+         
+        }
+
+        public override void CreateMoreInfoForm()
+        {
+            foreach (string str in m_ListForListBox)
+            {
+                m_MoreInfoForm.more.Items.Add(str);
+            }
         }
     }
 }

@@ -263,39 +263,19 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         private void postsAndLikes_DoubleClick(object sender, EventArgs e)
         {
             MoreInfoPostsAndLikes moreInfo = MoreInfoFactory.CreateMoreInfoWindow(postsAndLikes.SelectedItem) as MoreInfoPostsAndLikes;
-            Form2 moreInfoForm = new Form2();
-            foreach(string str in moreInfo.CreateMoreInfoText())
-            {
-                moreInfoForm.more.Items.Add(str);
-            } 
-            moreInfoForm.ShowDialog();
+            moreInfo.m_MoreInfoForm.ShowDialog();
         }
 
         private void listOfFriends_DoubleClick(object sender, EventArgs e)
         {
             MoreInfoListOfFriends moreInfo = MoreInfoFactory.CreateMoreInfoWindow(listOfFriends.SelectedItem) as MoreInfoListOfFriends;
-            Form2 moreInfoForm = new Form2();
-            foreach (string str in moreInfo.CreateMoreInfoText())
-            {
-                moreInfoForm.more.Items.Add(str);
-            }
-            moreInfoForm.ShowDialog();
+            moreInfo.m_MoreInfoForm.ShowDialog();
         }
 
         private void ListOfEvents_DoubleClick(object sender, EventArgs e)
         {
             MoreInfoListOfEvents moreInfo = MoreInfoFactory.CreateMoreInfoWindow(ListOfEvents.SelectedItem) as MoreInfoListOfEvents;
-            Form2 moreInfoForm = new Form2();
-            foreach (string str in moreInfo.CreateMoreInfoText())
-            {
-                moreInfoForm.more.Items.Add(str);
-            }
-            moreInfoForm.ShowDialog();
-        }
-
-        private void pages_DoubleClick(object sender, EventArgs e)
-        {
-            
+            moreInfo.m_MoreInfoForm.ShowDialog();
         }
 
         private void buttonRefreshAll_Click(object sender, EventArgs e)

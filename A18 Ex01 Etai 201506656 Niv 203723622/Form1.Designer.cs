@@ -218,7 +218,7 @@
             this.pages.Name = "pages";
             this.pages.Size = new System.Drawing.Size(120, 199);
             this.pages.TabIndex = 20;
-            this.pages.DoubleClick += new System.EventHandler(this.pages_DoubleClick);
+            
             // 
             // pageBindingSource
             // 

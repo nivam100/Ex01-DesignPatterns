@@ -12,14 +12,20 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
     {
         User m_Friend; 
         List<string> m_ListForListBox;
+        public Form2 m_MoreInfoForm;
+
+        
 
         public MoreInfoListOfFriends(object facebookObj) : base(facebookObj)
         {
             this.m_Friend = facebookObj as User;
             m_ListForListBox = new List<string>();
+            this.m_MoreInfoForm = new Form2();
+            this.CreateMoreInfoText();
+            this.CreateMoreInfoForm();
         }
 
-        public override List<string> CreateMoreInfoText()
+        public override void CreateMoreInfoText()
         {
             m_ListForListBox.Add("Friends name is:");
             m_ListForListBox.Add(Environment.NewLine);
@@ -32,7 +38,15 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             m_ListForListBox.Add("Friend Time Zone:");
             m_ListForListBox.Add(Environment.NewLine);
             m_ListForListBox.Add(m_Friend.TimeZone.ToString());
-            return m_ListForListBox;
+           
+        }
+
+        public override void CreateMoreInfoForm()
+        {
+            foreach (string str in m_ListForListBox)
+            {
+                m_MoreInfoForm.more.Items.Add(str);
+            }
         }
     }
 }

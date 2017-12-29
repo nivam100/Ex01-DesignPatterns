@@ -11,7 +11,9 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
     {
         protected MoreInfo(object facebookObj) { }
 
-        public abstract List<string> CreateMoreInfoText();
+        public abstract void CreateMoreInfoText();
+
+        public abstract void CreateMoreInfoForm();
 
     }
 }
