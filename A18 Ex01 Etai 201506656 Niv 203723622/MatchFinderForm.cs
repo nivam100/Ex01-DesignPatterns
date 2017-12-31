@@ -38,7 +38,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                     if(!onlySingles || friend.RelationshipStatus != User.eRelationshipStatus.Married)
                     {
                         listBoxMatches.Invoke(new Action(() => listBoxMatches.Items.Add(friend)));
-
                     }
                 }
             }
