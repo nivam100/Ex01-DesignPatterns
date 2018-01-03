@@ -16,6 +16,9 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
     {
         private User m_LoggedInUser;
         private User m_UserTest;
+        // Todo remeber to delete if loginProxy does not work
+        private LoginResult m_LoginResult;
+
         private string m_AppID;
         
 
@@ -71,6 +74,8 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         public Form1()
         {
             InitializeComponent();
+            //FacebookWrapper.FacebookService.s_CollectionLimit = 200;
+            //FacebookWrapper.FacebookService.s_FbApiVersion = 2.8f;
             FacebookWrapper.FacebookService.s_CollectionLimit = 200;
             FacebookWrapper.FacebookService.s_FbApiVersion = 2.8f;
         }
@@ -87,7 +92,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
             if(m_AppID != null)
             {
-                LoginResult result = FacebookService.Login("1450160541956417", /// (design patterrns Ex01 app)     //"124318548263284"
+                m_LoginResult = FacebookService.Login("1450160541956417", /// (design patterrns Ex01 app)     //"124318548263284"
                 "public_profile",
                 "user_education_history",
                 "user_birthday",
@@ -130,14 +135,14 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                 "rsvp_event"
                 );
 
-                if (!string.IsNullOrEmpty(result.AccessToken))
+                if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
                 {
-                    m_LoggedInUser = result.LoggedInUser;
+                    m_LoggedInUser = m_LoginResult.LoggedInUser; 
                     FetchUserInfo();
                 }
                 else
                 {
-                    MessageBox.Show(result.ErrorMessage);
+                    MessageBox.Show(m_LoginResult.ErrorMessage);
                 }
             } else
             {
@@ -292,5 +297,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             MatchFinderForm matchFinder = new MatchFinderForm(m_LoggedInUser);
             matchFinder.ShowDialog();
         }
+
     }
 }
