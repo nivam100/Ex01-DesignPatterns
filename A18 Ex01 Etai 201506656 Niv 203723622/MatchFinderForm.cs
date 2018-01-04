@@ -27,7 +27,8 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         private void buttonSearchMatch_Click(object sender, EventArgs e)
         {
             listBoxMatches.Items.Clear();
-            //new Thread(getMatches).Start();
+            // todo
+            // new Thread(getMatches).Start();
             User.eGender gender = (User.eGender)comboBoxGender.SelectedItem;
             bool single = (bool)checkBoxSinglesOnly.Checked;
             IEnumerable<User> matches = m_matchFinder.Match(gender, single.ToString());
@@ -37,21 +38,22 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             }
         }
 
-        private void getMatches()
-        {
-            listBoxMatches.Invoke(new Action(() => listBoxMatches.DisplayMember = "Name"));
-            foreach (User friend in m_loggedInUser.Friends)
-            {
-                if (friend.Gender == (User.eGender)comboBoxGender.Invoke(new Func<User.eGender>(() => {return (User.eGender)comboBoxGender.SelectedItem; })))
-                {
-                    bool onlySingles = (bool)checkBoxSinglesOnly.Invoke(new Func<bool>(() => { return checkBoxSinglesOnly.Checked; }));
-                    if(!onlySingles || friend.RelationshipStatus != User.eRelationshipStatus.Married)
-                    {
-                        listBoxMatches.Invoke(new Action(() => listBoxMatches.Items.Add(friend)));
-                    }
-                }
-            }
-        }
+        // TODO
+        //private void getMatches()
+        //{
+        //    listBoxMatches.Invoke(new Action(() => listBoxMatches.DisplayMember = "Name"));
+        //    foreach (User friend in m_loggedInUser.Friends)
+        //    {
+        //        if (friend.Gender == (User.eGender)comboBoxGender.Invoke(new Func<User.eGender>(() => {return (User.eGender)comboBoxGender.SelectedItem; })))
+        //        {
+        //            bool onlySingles = (bool)checkBoxSinglesOnly.Invoke(new Func<bool>(() => { return checkBoxSinglesOnly.Checked; }));
+        //            if(!onlySingles || friend.RelationshipStatus != User.eRelationshipStatus.Married)
+        //            {
+        //                listBoxMatches.Invoke(new Action(() => listBoxMatches.Items.Add(friend)));
+        //            }
+        //        }
+        //    }
+        //}
 
         private void listBoxMatches_SelectedIndexChanged(object sender, EventArgs e)
         {

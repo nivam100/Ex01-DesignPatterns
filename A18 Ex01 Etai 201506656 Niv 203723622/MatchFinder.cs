@@ -8,11 +8,11 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
     public class MatchFinder
     {
-        private MatchLogic m_logic;
+        private FriendFilter m_logic;
 
         internal MatchFinder(User i_user) 
         {
-            m_logic = new MatchLogic { m_user = i_user };
+            m_logic = new FriendFilter { m_user = i_user };
         }
         
         /// <summary>

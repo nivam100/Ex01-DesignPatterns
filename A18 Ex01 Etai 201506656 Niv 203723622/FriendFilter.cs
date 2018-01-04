@@ -6,7 +6,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
-    class MatchLogic
+    class FriendFilter
     {
         public User m_user { get; set; }
         
@@ -14,16 +14,29 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         {
             foreach(User friend in m_user.Friends)
             {
-                if (i_filter(m_user))
+                if (i_filter(friend))
                 {
                     yield return friend;
                 }
             }
         }
 
+        public FacebookObjectCollection<User> Filter2(Func<User, bool> i_filter)
+        {
+            FacebookObjectCollection<User> ans = new FacebookObjectCollection<User>();
+            foreach (User friend in m_user.Friends)
+            {
+                if (i_filter(m_user))
+                {
+                    ans.Add(friend);
+                }
+            }
+            return ans;
+        }
+
         public bool GenderFilter(User i_user, User.eGender i_gender)
         {
-            return i_user.Gender == i_gender;
+            return i_gender == i_user.Gender;
         }
 
         public bool GenderFemale(User i_user)

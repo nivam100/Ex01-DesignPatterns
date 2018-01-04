@@ -54,7 +54,7 @@
     <Compile Include="MatchFinderForm.Designer.cs">
       <DependentUpon>MatchFinderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MatchLogic.cs" />
+    <Compile Include="FriendFilter.cs" />
     <Compile Include="MoreInfoFactory.cs" />
     <Compile Include="MoreInfoListOfEvents.cs" />
     <Compile Include="MoreInfoListOfFriends.cs" />
