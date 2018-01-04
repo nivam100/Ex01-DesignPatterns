@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
+using System.Windows.Forms;
 
 namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
-    public class MoreInfoListOfEvents : MoreInfo
+    public class MoreInfoListOfEvents : Form
     {
         Event m_Event;
         List<string> m_ListForListBox;
         public Form2 m_MoreInfoForm;
 
-        public MoreInfoListOfEvents(object facebookObj) : base(facebookObj)
+        public MoreInfoListOfEvents(object facebookObj) : base()
         {
             this.m_Event = facebookObj as Event;
             m_ListForListBox = new List<string>();
@@ -22,7 +23,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             this.CreateMoreInfoForm();
         }
 
-        public override void CreateMoreInfoText()
+        public void CreateMoreInfoText()
         {
             m_ListForListBox.Add("Name Of The Event:");
             m_ListForListBox.Add(Environment.NewLine);
@@ -45,7 +46,12 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
          
         }
 
-        public override void CreateMoreInfoForm()
+        internal static Form Create(object i_selectedItem)
+        {
+            return new MoreInfoListOfEvents(i_selectedItem);
+        }
+
+        public void CreateMoreInfoForm()
         {
             foreach (string str in m_ListForListBox)
             {

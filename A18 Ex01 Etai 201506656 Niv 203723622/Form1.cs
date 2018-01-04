@@ -225,10 +225,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             new Thread(()=>FetchFriends(false)).Start();
         }
 
-        private void ListOfFriends_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void ButtonFetchLikedEvents_Click(object sender, EventArgs e)
         {
@@ -274,8 +270,11 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void ListOfEvents_DoubleClick(object sender, EventArgs e)
         {
-            MoreInfoListOfEvents moreInfo = MoreInfoFactory.CreateMoreInfoWindow(ListOfEvents.SelectedItem) as MoreInfoListOfEvents;
-            moreInfo.m_MoreInfoForm.ShowDialog();
+            Form moreInfoEvent = MoreInfoFactory.CreateMoreInfoWindow(ListOfEvents.SelectedItem, "event");
+            moreInfoEvent.ShowDialog();
+            // Todo
+            //MoreInfoListOfEvents moreInfo = MoreInfoFactory.CreateMoreInfoWindow(ListOfEvents.SelectedItem) as MoreInfoListOfEvents;
+            //moreInfo.m_MoreInfoForm.ShowDialog();
         }
 
         private void buttonRefreshAll_Click(object sender, EventArgs e)

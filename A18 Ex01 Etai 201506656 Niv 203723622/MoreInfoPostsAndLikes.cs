@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
 namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
-    public class MoreInfoPostsAndLikes : MoreInfo
+    public class MoreInfoPostsAndLikes : IMoreInfoBuilder
     {
         Post m_Post;
         List<string> m_ListForListBox;
@@ -49,6 +50,12 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             }
             
         }
+
+        internal static Form Create(object i_selectedItem)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void CreateMoreInfoForm()
         {
             foreach (string str in m_ListForListBox)

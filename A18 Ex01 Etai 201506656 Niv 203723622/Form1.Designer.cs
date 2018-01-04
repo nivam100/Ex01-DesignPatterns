@@ -167,7 +167,6 @@
             this.listOfFriends.Name = "listOfFriends";
             this.listOfFriends.Size = new System.Drawing.Size(120, 199);
             this.listOfFriends.TabIndex = 14;
-            this.listOfFriends.SelectedIndexChanged += new System.EventHandler(this.ListOfFriends_SelectedIndexChanged);
             this.listOfFriends.DoubleClick += new System.EventHandler(this.listOfFriends_DoubleClick);
             // 
             // userBindingSource

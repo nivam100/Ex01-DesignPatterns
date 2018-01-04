@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-
+using System.Windows.Forms;
 
 namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
-    public class MoreInfoListOfFriends: MoreInfo
+    public class MoreInfoListOfFriends: IMoreInfoBuilder
     {
         User m_Friend; 
         List<string> m_ListForListBox;
@@ -39,6 +39,11 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             m_ListForListBox.Add(Environment.NewLine);
             m_ListForListBox.Add(m_Friend.TimeZone.ToString());
            
+        }
+
+        internal static Form Create(object i_selectedItem)
+        {
+            throw new NotImplementedException();
         }
 
         public override void CreateMoreInfoForm()
