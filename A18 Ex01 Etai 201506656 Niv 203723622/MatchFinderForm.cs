@@ -13,18 +13,28 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
     public partial class MatchFinderForm : Form
     {
+        private MatchFinder m_matchFinder;
         private User m_loggedInUser;
         public MatchFinderForm(User i_LoggedInUser)
         {
             m_loggedInUser = i_LoggedInUser;
+            m_matchFinder = MatchFinderCtor.Instance(i_LoggedInUser);
             InitializeComponent();
             comboBoxGender.DataSource = Enum.GetValues(typeof(User.eGender));
+            listBoxMatches.DisplayMember = "Name";
         }
 
         private void buttonSearchMatch_Click(object sender, EventArgs e)
         {
             listBoxMatches.Items.Clear();
-            new Thread(getMatches).Start();
+            //new Thread(getMatches).Start();
+            User.eGender gender = (User.eGender)comboBoxGender.SelectedItem;
+            bool single = (bool)checkBoxSinglesOnly.Checked;
+            IEnumerable<User> matches = m_matchFinder.Match(gender, single.ToString());
+            foreach(User friend in matches)
+            {
+                listBoxMatches.Items.Add(friend);
+            }
         }
 
         private void getMatches()
