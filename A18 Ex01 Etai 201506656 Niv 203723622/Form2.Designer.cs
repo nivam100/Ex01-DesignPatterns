@@ -39,7 +39,6 @@
             this.more.Name = "more";
             this.more.Size = new System.Drawing.Size(195, 238);
             this.more.TabIndex = 0;
-            this.more.SelectedIndexChanged += new System.EventHandler(this.more_SelectedIndexChanged);
             // 
             // Form2
             // 

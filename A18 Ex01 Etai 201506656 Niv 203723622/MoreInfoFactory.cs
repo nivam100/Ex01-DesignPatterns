@@ -14,7 +14,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             {
                 return new MoreInfoPostsAndLikes(facebookObj);
             }
-            else if(facebookObj as User != null)
+            else if (facebookObj as User != null)
             {
                 return new MoreInfoListOfFriends(facebookObj);
             }

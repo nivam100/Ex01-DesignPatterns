@@ -14,9 +14,8 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
     public partial class Form1 : Form
     {
-        private User m_LoggedInUser;
-        private User m_UserTest;
-        private string m_AppID;
+        private User m_loggedInUser;
+        private string m_appID;
         
 
         private enum eNoun1
@@ -79,72 +78,9 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void LoginAndInit()
         {
-
-            /// Owner: design.patterns
-
-            //if(m_AppID != null)
-            //{
-            //    LoginResult result = FacebookService.Login("1450160541956417", /// (design patterrns Ex01 app)     //"124318548263284"
-            //    "public_profile",
-            //    "user_education_history",
-            //    "user_birthday",
-            //    "user_actions.video",
-            //    "user_actions.news",
-            //    "user_actions.music",
-            //    "user_actions.fitness",
-            //    "user_actions.books",
-            //    "user_about_me",
-            //    "user_friends",
-            //    "publish_actions",
-            //    "user_events",
-            //    "user_games_activity",
-            //    //"user_groups" (This permission is only available for apps using Graph API version v2.3 or older.)
-            //    "user_hometown",
-            //    "user_likes",
-            //    "user_location",
-            //    "user_managed_groups",
-            //    "user_photos",
-            //    "user_posts",
-            //    "user_relationships",
-            //    "user_relationship_details",
-            //    "user_religion_politics",
-
-            //    //"user_status" (This permission is only available for apps using Graph API version v2.3 or older.)
-            //    "user_tagged_places",
-            //    "user_videos",
-            //    "user_website",
-            //    "user_work_history",
-            //    "read_custom_friendlists",
-
-            //    // "read_mailbox", (This permission is only available for apps using Graph API version v2.3 or older.)
-            //    "read_page_mailboxes",
-            //    // "read_stream", (This permission is only available for apps using Graph API version v2.3 or older.)
-            //    // "manage_notifications", (This permission is only available for apps using Graph API version v2.3 or older.)
-            //    "manage_pages",
-            //    "publish_pages",
-            //    "publish_actions",
-
-            //    "rsvp_event"
-            //    );
-
-            //    if (!string.IsNullOrEmpty(result.AccessToken))
-            //    {
-            //        m_LoggedInUser = result.LoggedInUser;
-            //        FetchUserInfo();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show(result.ErrorMessage);
-            //    }
-            //} else
-            //{
-            //    MessageBox.Show("Please check App ID");
-            //}
-            /// Use the FacebookService.Login method to display the login form to any user who wish to use this application.
-            /// You can then save the result.AccessToken for future auto-connect to this user:
             SocialNetworkDirector facebookConnector = new SocialNetworkDirector();
-            m_LoggedInUser = facebookConnector.LoginAndGetUser(m_AppID, new FaceBookBuilder());
-            if(m_LoggedInUser != null)
+            m_loggedInUser = facebookConnector.LoginAndGetUser(m_appID, new FaceBookBuilder());
+            if (m_loggedInUser != null)
             {
                 FetchUserInfo();
             }
@@ -156,9 +92,9 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void FetchUserInfo()
         {
-            new Thread(() => this.pictureBoxProfile.ImageLocation = this.m_LoggedInUser.PictureSmallURL).Start();
-            string FirstAndLastname = String.Format("{0} {1}", this.m_LoggedInUser.FirstName, m_LoggedInUser.LastName);
-            this.labelUsername.Text = FirstAndLastname;
+            new Thread(() => this.pictureBoxProfile.ImageLocation = this.m_loggedInUser.PictureSmallURL).Start();
+            string firstAndLastname = String.Format("{0} {1}", this.m_loggedInUser.FirstName, m_loggedInUser.LastName);
+            this.labelUsername.Text = firstAndLastname;
         }
 
         private void ButtonLogout_Click(object sender, EventArgs e)
@@ -181,7 +117,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         {
             if (!string.IsNullOrEmpty(this.textBoxPostText.Text))
             {
-                Status postedStatus = m_LoggedInUser.PostStatus(textBoxPostText.Text);
+                Status postedStatus = m_loggedInUser.PostStatus(textBoxPostText.Text);
                 MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
             } else
             {
@@ -191,44 +127,44 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void FetchPosts()
         {
-            Invoke(new Action(() => postBindingSource.DataSource = m_LoggedInUser.Posts));
+            Invoke(new Action(() => postBindingSource.DataSource = m_loggedInUser.Posts));
         }
 
         private void FetchFriends(bool i_CheckBirthday)
         {
-            Invoke(new Action(() => userBindingSource.DataSource = m_LoggedInUser.Friends));
+            Invoke(new Action(() => userBindingSource.DataSource = m_loggedInUser.Friends));
         }
 
         private void FetchEvents()
         {
-            Invoke(new Action(() => eventBindingSource.DataSource = m_LoggedInUser.Events));
+            Invoke(new Action(() => eventBindingSource.DataSource = m_loggedInUser.Events));
         }
 
         private void FetchPages()
         {
-            Invoke(new Action(() => pageBindingSource.DataSource = m_LoggedInUser.LikedPages));
+            Invoke(new Action(() => pageBindingSource.DataSource = m_loggedInUser.LikedPages));
         }
 
         private void CreateRandomPost()
         {
-            string noun1 = Enum.GetName(typeof (eNoun1), Convert.ToInt32((new Random()).NextDouble() * Enum.GetNames(typeof(eNoun1)).Length));
+            string noun1 = Enum.GetName(typeof(eNoun1), Convert.ToInt32((new Random()).NextDouble() * Enum.GetNames(typeof(eNoun1)).Length));
             string noun2 = Enum.GetName(typeof(eNoun2), Convert.ToInt32((new Random()).NextDouble() * Enum.GetNames(typeof(eNoun2)).Length));
             string member = Enum.GetName(typeof(eMember), Convert.ToInt32((new Random()).NextDouble() * Enum.GetNames(typeof(eMember)).Length));
             string profession = Enum.GetName(typeof(eProffession), Convert.ToInt32((new Random()).NextDouble() * Enum.GetNames(typeof(eProffession)).Length));
             string randomPost = "my " + member + " is a " + noun1.Replace("_", " ") + " " + noun2 + " " + profession;
-            Status postedStatus = m_LoggedInUser.PostStatus(randomPost);
+            Status postedStatus = m_loggedInUser.PostStatus(randomPost);
             MessageBox.Show("Status Posted! ID: " + postedStatus.Id + "the post is: " + randomPost);
         }
         
         private void ButtonFetchPosts_Click(object sender, EventArgs e)
         {
-            postBindingSource.DataSource = m_LoggedInUser.Events;
+            postBindingSource.DataSource = m_loggedInUser.Events;
             new Thread(FetchPosts).Start();
         }
 
         private void ButtonFetchFriends_Click(object sender, EventArgs e)
         {
-            new Thread(()=>FetchFriends(false)).Start();
+            new Thread(() => FetchFriends(false)).Start();
         }
 
         private void ListOfFriends_SelectedIndexChanged(object sender, EventArgs e)
@@ -258,12 +194,12 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void ClassAppId_CheckedChanged(object sender, EventArgs e)
         {
-            m_AppID = "1450160541956417";
+            m_appID = "1450160541956417";
         }
 
         private void OurAppId_CheckedChanged(object sender, EventArgs e)
         {
-            m_AppID = "124318548263284";
+            m_appID = "124318548263284";
         }
 
         private void postsAndLikes_DoubleClick(object sender, EventArgs e)
@@ -287,7 +223,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         private void buttonRefreshAll_Click(object sender, EventArgs e)
         {
             new Thread(FetchEvents).Start();
-            new Thread(()=> FetchFriends(false)).Start();
+            new Thread(() => FetchFriends(false)).Start();
             new Thread(FetchPages).Start();
             new Thread(FetchPosts).Start();
 
@@ -295,7 +231,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void buttonFindMatch_Click(object sender, EventArgs e)
         {
-            MatchFinderForm matchFinder = new MatchFinderForm(m_LoggedInUser);
+            MatchFinderForm matchFinder = new MatchFinderForm(m_loggedInUser);
             matchFinder.ShowDialog();
         }
     }

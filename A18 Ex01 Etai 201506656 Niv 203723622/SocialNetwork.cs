@@ -28,14 +28,14 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         public User LoggedUser()
         {
-            return m_loggedInUser;
+            return this.m_loggedInUser;
         }
 
         public bool Login(string i_appID)
         {
             string appId = i_appID == string.Empty ? "1450160541956417" : i_appID;
 
-            LoginResult loginResult = FacebookService.Login(appId, /// (design patterrns Ex01 app)     //"124318548263284"
+            LoginResult loginResult = FacebookService.Login(appId, 
                 "public_profile",
                 "user_education_history",
                 "user_birthday",
@@ -49,7 +49,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                 "publish_actions",
                 "user_events",
                 "user_games_activity",
-                //"user_groups" (This permission is only available for apps using Graph API version v2.3 or older.)
                 "user_hometown",
                 "user_likes",
                 "user_location",

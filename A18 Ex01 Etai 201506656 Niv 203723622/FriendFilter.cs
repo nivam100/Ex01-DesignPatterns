@@ -12,7 +12,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         
         public IEnumerable<User> Filter(Func<User, bool> i_filter)
         {
-            foreach(User friend in m_user.Friends)
+            foreach (User friend in m_user.Friends)
             {
                 if (i_filter(friend))
                 {
@@ -70,10 +70,10 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         public bool AgeFilter(User i_user, DateTime i_beforeDate, DateTime i_afterDate, bool i_force = false)
         {
-            if(i_user.Birthday != null)
+            if (i_user.Birthday != null)
             {
                 DateTime birthday = Convert.ToDateTime(i_user.Birthday);
-                if(birthday <= i_beforeDate && birthday >= i_afterDate)
+                if (birthday <= i_beforeDate && birthday >= i_afterDate)
                 {
                     return true;
                 }

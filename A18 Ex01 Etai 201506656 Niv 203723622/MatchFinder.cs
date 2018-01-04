@@ -41,7 +41,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                     break;
             
             }
-            return m_logic.Filter((i_usr) => { bool a =  m_logic.GenderFilter(i_usr, i_gender) && m_logic.AgeFilter(i_usr, bornBefore, bornAfter);
+            return m_logic.Filter((i_usr) => { bool a = m_logic.GenderFilter(i_usr, i_gender) && m_logic.AgeFilter(i_usr, bornBefore, bornAfter);
                 bool b = single ? m_logic.Single(i_usr, forceSingle) : true;
                 return a && b;
             });

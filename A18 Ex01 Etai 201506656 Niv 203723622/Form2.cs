@@ -15,10 +15,5 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         {
             InitializeComponent();
         }
-
-        private void more_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
