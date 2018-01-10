@@ -16,6 +16,15 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
     {
         private User m_loggedInUser;
         private string m_appID;
+        Menu m_Menu;
+
+        private enum Actions
+        {
+            FetchPosts = 0,
+            FetchFriends = 1,
+            FetchEvents = 2,
+            FetchPages = 3
+        }
         
 
         private enum eNoun1
@@ -67,11 +76,25 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             Translator
         }
 
+        Actions m_Action;
+
         public Form1()
         {
+            InitMenu();
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 200;
             FacebookWrapper.FacebookService.s_FbApiVersion = 2.8f;
+        }
+
+        public void InitMenu()
+        {
+            m_Menu = new Menu
+            {
+                new MenuItem{ Command = new FetchPostsCommand { Client = this } },
+                new MenuItem{ Command = new FetchFriendsCommand { Client = this } },
+                new MenuItem{ Command = new FetchEventsCommand { Client = this } },
+                new MenuItem{ Command = new FetchPagesCommand { Client = this } }
+            };
         }
 
         
@@ -158,11 +181,25 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         
         private void ButtonFetchPosts_Click(object sender, EventArgs e)
         {
+            
             postBindingSource.DataSource = m_loggedInUser.Events;
+            m_Action = Actions.FetchPosts;
+            m_Menu.Run((int)m_Action);
+            
+        }
+
+        private void doFetchPosts()
+        {
             new Thread(FetchPosts).Start();
         }
 
         private void ButtonFetchFriends_Click(object sender, EventArgs e)
+        {
+            m_Action = Actions.FetchFriends;
+            m_Menu.Run((int)m_Action); 
+        }
+
+        private void doFetchFriends()
         {
             new Thread(() => FetchFriends(false)).Start();
         }
@@ -174,10 +211,22 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void ButtonFetchLikedEvents_Click(object sender, EventArgs e)
         {
+            m_Action = Actions.FetchEvents;
+            m_Menu.Run((int)m_Action);
+        }
+
+        private void doFetchEvents()
+        {
             new Thread(FetchEvents).Start();
         }
 
         private void ButtonFetchPages_Click(object sender, EventArgs e)
+        {
+            m_Action = Actions.FetchPages;
+            m_Menu.Run((int)m_Action);
+        }
+
+        private void doFetchPages()
         {
             new Thread(FetchPages).Start();
         }
@@ -233,6 +282,47 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         {
             MatchFinderForm matchFinder = new MatchFinderForm(m_loggedInUser);
             matchFinder.ShowDialog();
+        }
+
+
+        public class FetchPostsCommand : ICommand
+        {
+            public Form1 Client { get; set; }
+
+            public void Execute()
+            {
+                Client.doFetchPosts();
+            }
+        }
+
+        public class FetchFriendsCommand : ICommand
+        {
+            public Form1 Client { get; set; }
+
+            public void Execute()
+            {
+                Client.doFetchFriends();
+            }
+        }
+
+        public class FetchEventsCommand : ICommand
+        {
+            public Form1 Client { get; set; }
+
+            public void Execute()
+            {
+                Client.doFetchEvents();
+            }
+        }
+
+        public class FetchPagesCommand : ICommand
+        {
+            public Form1 Client { get; set; }
+
+            public void Execute()
+            {
+                Client.doFetchPages();
+            }
         }
     }
 }

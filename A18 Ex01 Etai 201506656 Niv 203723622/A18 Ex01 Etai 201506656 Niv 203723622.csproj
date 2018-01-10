@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICommand.cs" />
     <Compile Include="MatchFinder.cs" />
     <Compile Include="MatchFinderCtor.cs" />
     <Compile Include="MatchFinderForm.cs">
@@ -55,6 +56,8 @@
       <DependentUpon>MatchFinderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FriendFilter.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="MenuItem.cs" />
     <Compile Include="MoreInfoFactory.cs" />
     <Compile Include="MoreInfoListOfEvents.cs" />
     <Compile Include="MoreInfoListOfFriends.cs" />
