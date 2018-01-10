@@ -90,10 +90,10 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         {
             m_Menu = new Menu
             {
-                new MenuItem{ Command = new FetchPostsCommand { Client = this } },
-                new MenuItem{ Command = new FetchFriendsCommand { Client = this } },
-                new MenuItem{ Command = new FetchEventsCommand { Client = this } },
-                new MenuItem{ Command = new FetchPagesCommand { Client = this } }
+                new MenuItem{ Command = this.doFetchPosts },
+                new MenuItem{ Command = this.doFetchFriends },
+                new MenuItem{ Command = this.doFetchEvents },
+                new MenuItem{ Command = this.doFetchPages }
             };
         }
 
@@ -284,45 +284,5 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             matchFinder.ShowDialog();
         }
 
-
-        public class FetchPostsCommand : ICommand
-        {
-            public Form1 Client { get; set; }
-
-            public void Execute()
-            {
-                Client.doFetchPosts();
-            }
-        }
-
-        public class FetchFriendsCommand : ICommand
-        {
-            public Form1 Client { get; set; }
-
-            public void Execute()
-            {
-                Client.doFetchFriends();
-            }
-        }
-
-        public class FetchEventsCommand : ICommand
-        {
-            public Form1 Client { get; set; }
-
-            public void Execute()
-            {
-                Client.doFetchEvents();
-            }
-        }
-
-        public class FetchPagesCommand : ICommand
-        {
-            public Form1 Client { get; set; }
-
-            public void Execute()
-            {
-                Client.doFetchPages();
-            }
-        }
     }
 }
