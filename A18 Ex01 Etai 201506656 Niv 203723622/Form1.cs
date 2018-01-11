@@ -241,16 +241,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             new Thread(() => FetchFriends(true)).Start();
         }
 
-        private void ClassAppId_CheckedChanged(object sender, EventArgs e)
-        {
-            m_appID = "1450160541956417";
-        }
-
-        private void OurAppId_CheckedChanged(object sender, EventArgs e)
-        {
-            m_appID = "124318548263284";
-        }
-
         private void postsAndLikes_DoubleClick(object sender, EventArgs e)
         {
             MoreInfoPostsAndLikes moreInfo = MoreInfoFactory.CreateMoreInfoWindow(postsAndLikes.SelectedItem) as MoreInfoPostsAndLikes;
@@ -284,5 +274,14 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             matchFinder.ShowDialog();
         }
 
+        private void ClassAppId_CheckedChanged_1(object sender, EventArgs e)
+        {
+            m_appID = "1450160541956417";
+        }
+
+        private void OurAppId_CheckedChanged_1(object sender, EventArgs e)
+        {
+            m_appID = "124318548263284";
+        }
     }
 }

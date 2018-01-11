@@ -46,6 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RadioButtonSubject.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConcreteSubjectRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IObserver.cs" />
+    <Compile Include="LoginButtonConcreteObserver.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MatchFinder.cs" />
     <Compile Include="MatchFinderCtor.cs" />
     <Compile Include="MatchFinderForm.cs">

@@ -32,7 +32,7 @@
             this.labelUsername = new System.Windows.Forms.Label();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.buttonLogin = new System.Windows.Forms.Button();
+            this.buttonLogin = new LoginButtonConcreteObserver();
             this.textBoxPostText = new System.Windows.Forms.TextBox();
             this.buttonPost = new System.Windows.Forms.Button();
             this.buttonFetchPosts = new System.Windows.Forms.Button();
@@ -50,11 +50,11 @@
             this.buttonCreateRandomPost = new System.Windows.Forms.Button();
             this.buttonGetBirthdays = new System.Windows.Forms.Button();
             this.friendsBirthdays = new System.Windows.Forms.ListBox();
-            this.classAppId = new System.Windows.Forms.CheckBox();
-            this.ourAppId = new System.Windows.Forms.CheckBox();
             this.label = new System.Windows.Forms.Label();
             this.buttonRefreshAll = new System.Windows.Forms.Button();
             this.buttonFindMatch = new System.Windows.Forms.Button();
+            this.ClassAppId = new ConcreteSubjectRadioButton();
+            this.OurAppId = new ConcreteSubjectRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
@@ -218,7 +218,6 @@
             this.pages.Name = "pages";
             this.pages.Size = new System.Drawing.Size(120, 199);
             this.pages.TabIndex = 20;
-            
             // 
             // pageBindingSource
             // 
@@ -252,28 +251,6 @@
             this.friendsBirthdays.Size = new System.Drawing.Size(215, 199);
             this.friendsBirthdays.TabIndex = 23;
             // 
-            // classAppId
-            // 
-            this.classAppId.AutoSize = true;
-            this.classAppId.Location = new System.Drawing.Point(12, 38);
-            this.classAppId.Name = "classAppId";
-            this.classAppId.Size = new System.Drawing.Size(87, 17);
-            this.classAppId.TabIndex = 24;
-            this.classAppId.Text = "Class App ID";
-            this.classAppId.UseVisualStyleBackColor = true;
-            this.classAppId.CheckedChanged += new System.EventHandler(this.ClassAppId_CheckedChanged);
-            // 
-            // ourAppId
-            // 
-            this.ourAppId.AutoSize = true;
-            this.ourAppId.Location = new System.Drawing.Point(12, 60);
-            this.ourAppId.Name = "ourAppId";
-            this.ourAppId.Size = new System.Drawing.Size(79, 17);
-            this.ourAppId.TabIndex = 25;
-            this.ourAppId.Text = "Our App ID";
-            this.ourAppId.UseVisualStyleBackColor = true;
-            this.ourAppId.CheckedChanged += new System.EventHandler(this.OurAppId_CheckedChanged);
-            // 
             // label
             // 
             this.label.AutoSize = true;
@@ -303,16 +280,42 @@
             this.buttonFindMatch.UseVisualStyleBackColor = true;
             this.buttonFindMatch.Click += new System.EventHandler(this.buttonFindMatch_Click);
             // 
+            // ClassAppId
+            // 
+            this.ClassAppId.AutoSize = true;
+            this.ClassAppId.Location = new System.Drawing.Point(12, 30);
+            this.ClassAppId.Name = "ClassAppId";
+            this.ClassAppId.Size = new System.Drawing.Size(84, 17);
+            this.ClassAppId.TabIndex = 29;
+            this.ClassAppId.TabStop = true;
+            this.ClassAppId.Text = "Class App Id";
+            this.ClassAppId.UseVisualStyleBackColor = true;
+            this.ClassAppId.Attach(this.buttonLogin);
+            this.ClassAppId.CheckedChanged += new System.EventHandler(this.ClassAppId_CheckedChanged_1);
+            // 
+            // OurAppId
+            // 
+            this.OurAppId.AutoSize = true;
+            this.OurAppId.Location = new System.Drawing.Point(12, 47);
+            this.OurAppId.Name = "OurAppId";
+            this.OurAppId.Size = new System.Drawing.Size(76, 17);
+            this.OurAppId.TabIndex = 30;
+            this.OurAppId.TabStop = true;
+            this.OurAppId.Text = "Our App Id";
+            this.OurAppId.UseVisualStyleBackColor = true;
+            this.OurAppId.Attach(this.buttonLogin);
+            this.OurAppId.CheckedChanged += new System.EventHandler(this.OurAppId_CheckedChanged_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 363);
+            this.Controls.Add(this.OurAppId);
+            this.Controls.Add(this.ClassAppId);
             this.Controls.Add(this.buttonFindMatch);
             this.Controls.Add(this.buttonRefreshAll);
             this.Controls.Add(this.label);
-            this.Controls.Add(this.ourAppId);
-            this.Controls.Add(this.classAppId);
             this.Controls.Add(this.friendsBirthdays);
             this.Controls.Add(this.buttonGetBirthdays);
             this.Controls.Add(this.buttonCreateRandomPost);
@@ -347,7 +350,7 @@
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.Button buttonLogout;
-        private System.Windows.Forms.Button buttonLogin;
+        private LoginButtonConcreteObserver buttonLogin;
         private System.Windows.Forms.TextBox textBoxPostText;
         private System.Windows.Forms.Button buttonPost;
         private System.Windows.Forms.Button buttonFetchPosts;
@@ -361,8 +364,6 @@
         private System.Windows.Forms.Button buttonCreateRandomPost;
         private System.Windows.Forms.Button buttonGetBirthdays;
         private System.Windows.Forms.ListBox friendsBirthdays;
-        private System.Windows.Forms.CheckBox classAppId;
-        private System.Windows.Forms.CheckBox ourAppId;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.BindingSource postBindingSource;
         private System.Windows.Forms.BindingSource userBindingSource;
@@ -370,6 +371,8 @@
         private System.Windows.Forms.BindingSource pageBindingSource;
         private System.Windows.Forms.Button buttonRefreshAll;
         private System.Windows.Forms.Button buttonFindMatch;
+        private ConcreteSubjectRadioButton ClassAppId;
+        private ConcreteSubjectRadioButton OurAppId;
     }
 }
 
