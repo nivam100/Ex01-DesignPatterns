@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ITestHandler.cs" />
     <Compile Include="RadioButtonSubject.cs">
       <SubType>Component</SubType>
     </Compile>

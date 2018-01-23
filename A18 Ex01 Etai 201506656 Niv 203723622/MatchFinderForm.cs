@@ -30,7 +30,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             listBoxMatches.Items.Clear();
             User.eGender gender = (User.eGender)comboBoxGender.SelectedItem;
             bool single = (bool)checkBoxSinglesOnly.Checked;
-            IEnumerable<User> matches = m_matchFinder.Match(gender, single.ToString());
+            IEnumerable<User> matches = m_matchFinder.Match2(gender, single.ToString());
             foreach (User friend in matches)
             {
                 listBoxMatches.Items.Add(friend);

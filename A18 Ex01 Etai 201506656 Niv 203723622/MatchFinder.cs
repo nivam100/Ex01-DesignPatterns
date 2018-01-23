@@ -15,6 +15,34 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             m_logic = new FriendFilter { m_user = i_user };
         }
         
+
+
+        public IEnumerable<User> MatchWithAge2(User.eGender i_gender, string i_single = "false", int i_minAge = 18, int i_maxAge = 70)
+        {
+            DateTime bornBefore = DateTime.Now.AddYears(-i_minAge);
+            DateTime bornAfter = DateTime.Now.AddYears(-i_maxAge);
+            bool forceSingle = false;
+            bool single = false;
+            switch (i_single)
+            {
+                case "false":
+                    single = false;
+                    break;
+                case "true":
+                    single = true;
+                    break;
+                case "force":
+                    single = true;
+                    forceSingle = true;
+                    break;
+
+            }
+            TestHandler headTest = new TestHandler((i_user)=> m_logic.GenderFilter(i_user, i_gender));
+            headTest.add((i_user) => m_logic.AgeFilter(i_user, bornBefore, bornAfter));
+            headTest.add((i_user) => single ? m_logic.Single(i_user, forceSingle) : true);
+            return m_logic.ChainFilter(headTest);
+        }
+
         /// <summary>
         ///  i_single, recivies "false", "true" and "force" to force only matches with age.
         /// </summary>
@@ -47,7 +75,28 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             });
         }
 
-        
+        public IEnumerable<User> Match2(User.eGender i_gender, string i_single = "False")
+        {
+            bool forceSingle = false;
+            bool single = false;
+            switch (i_single)
+            {
+                case "False":
+                    single = false;
+                    break;
+                case "True":
+                    single = true;
+                    break;
+                case "Force":
+                    single = true;
+                    forceSingle = true;
+                    break;
+            }
+            ITestHandler<User> tester = new TestHandler((i_user) => m_logic.GenderFilter(i_user, i_gender));
+            tester.add((i_user) => single ? m_logic.GenderFilter(i_user, i_gender) : true);
+            return m_logic.ChainFilter(tester);
+        }
+
         public IEnumerable<User> Match(User.eGender i_gender, string i_single = "False")
         {
             bool forceSingle = false;
@@ -72,6 +121,11 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             });
         }
 
+        /// <summary>
+        /// Tester that checks if user is in legal age (18 years of age) 
+        /// </summary>
+        /// <param name="i_user"></param>
+        /// <returns>Is the user of legal age</returns>
         public bool LegalAge(User i_user)
         {
             DateTime minAge = DateTime.Now.AddYears(-18);
