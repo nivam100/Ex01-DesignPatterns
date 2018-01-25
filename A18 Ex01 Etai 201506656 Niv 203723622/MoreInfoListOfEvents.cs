@@ -42,7 +42,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                 m_listForListBox.Add(Environment.NewLine);
                 m_listForListBox.Add(m_event.Location);
             }
-         
         }
 
         public override void CreateMoreInfoForm()

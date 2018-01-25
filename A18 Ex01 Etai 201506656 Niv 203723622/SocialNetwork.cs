@@ -1,9 +1,9 @@
-﻿using FacebookWrapper;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
@@ -19,6 +19,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
     public interface ISocialNetworkBuilder
     {
         bool Login(string i_appID);
+
         User LoggedUser();
     }
 
@@ -73,9 +74,7 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                 "manage_pages",
                 "publish_pages",
                 "publish_actions",
-
-                "rsvp_event"
-                );
+                "rsvp_event");
             if (!string.IsNullOrEmpty(loginResult.AccessToken))
             {
                 m_loggedInUser = loginResult.LoggedInUser;
@@ -84,9 +83,8 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             {
                 Console.Error.WriteLine(loginResult.ErrorMessage);
             }
+
             return m_loggedInUser != null;
         }
     }
 }
-    
-

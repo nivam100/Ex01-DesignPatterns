@@ -41,12 +41,13 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
                 m_listForListBox.Add(comment.Message);
                 m_listForListBox.Add(Environment.NewLine);
             }
+
             if (beenHere == false)
             {
                 m_listForListBox.Add("No Comments");
             }
-            
         }
+
         public override void CreateMoreInfoForm()
         {
             foreach (string str in m_listForListBox)

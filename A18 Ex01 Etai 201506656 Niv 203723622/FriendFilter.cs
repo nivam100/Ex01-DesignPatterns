@@ -6,32 +6,20 @@ using FacebookWrapper.ObjectModel;
 
 namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
-    class FriendFilter
+    public class FriendFilter
     {
         public User m_user { get; set; }
-        
-        public IEnumerable<User> Filter(Func<User, bool> i_filter)
-        {
-            foreach (User friend in m_user.Friends)
-            {
-                if (i_filter(friend))
-                {
-                    yield return friend;
-                }
-            }
-        }
 
         public IEnumerable<User> ChainFilter(ITestHandler<User> i_filter)
         {
             foreach (User friend in m_user.Friends)
             {
-                if (i_filter.execute(friend))
+                if (i_filter.UserTestHandler(friend))
                 {
                     yield return friend;
                 }
             }
         }
-
 
         public bool GenderFilter(User i_user, User.eGender i_gender)
         {
@@ -63,8 +51,8 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             {
                 ans = false;
             }
-            return ans;
-                
+
+            return ans; 
         }
 
         public bool AgeFilter(User i_user, DateTime i_beforeDate, DateTime i_afterDate, bool i_force = false)
@@ -84,8 +72,5 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
             return false;
         }
-
-       
-        
     }
 }

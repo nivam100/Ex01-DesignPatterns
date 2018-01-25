@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
-    class RadioButtonSubject : RadioButton
+    internal class RadioButtonSubject : RadioButton
     {
         private List<IObserver> m_Observers = new List<IObserver>();
 

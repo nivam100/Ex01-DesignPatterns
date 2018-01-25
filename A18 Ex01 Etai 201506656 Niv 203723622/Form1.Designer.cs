@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -375,4 +376,3 @@
         private ConcreteSubjectRadioButton OurAppId;
     }
 }
-

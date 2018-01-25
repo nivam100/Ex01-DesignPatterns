@@ -5,7 +5,6 @@ using System.Text;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 
-
 namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
     public class MoreInfoListOfFriends: MoreInfo
@@ -13,8 +12,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         public Form2 m_MoreInfoForm;
         private User m_friend; 
         private List<string> m_listForListBox;
-
-        
 
         public MoreInfoListOfFriends(object facebookObj): base(facebookObj)
         {
@@ -38,7 +35,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             m_listForListBox.Add("Friend Time Zone:");
             m_listForListBox.Add(Environment.NewLine);
             m_listForListBox.Add(m_friend.TimeZone.ToString());
-           
         }
 
         public override void CreateMoreInfoForm()
@@ -50,4 +46,3 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         }
     }
 }
-

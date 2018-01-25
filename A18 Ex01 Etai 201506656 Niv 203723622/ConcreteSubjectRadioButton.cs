@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
-    class ConcreteSubjectRadioButton : RadioButtonSubject
+    internal class ConcreteSubjectRadioButton : RadioButtonSubject
     {
         private bool StateChanged { get; set; }
        

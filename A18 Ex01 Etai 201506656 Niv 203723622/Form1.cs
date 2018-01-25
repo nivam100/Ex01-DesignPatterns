@@ -1,6 +1,4 @@
-﻿using FacebookWrapper;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace A18_Ex01_Etai_201506656_Niv_203723622
 {
@@ -16,7 +16,8 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
     {
         private User m_loggedInUser;
         private string m_appID;
-        Menu m_Menu;
+        private Menu m_Menu;
+        private Actions m_Action;
 
         private enum Actions
         {
@@ -26,7 +27,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             FetchPages = 3
         }
         
-
         private enum eNoun1
         {
             Brown_Eyes,
@@ -76,8 +76,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             Translator
         }
 
-        Actions m_Action;
-
         public Form1()
         {
             InitMenu();
@@ -91,13 +89,16 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             m_Menu = new Menu
             {
                 new MenuItem{ Command = this.doFetchPosts },
-                new MenuItem{ Command = this.doFetchFriends },
+                new MenuItem{ Command = this.doFetchFriends},
                 new MenuItem{ Command = this.doFetchEvents },
                 new MenuItem{ Command = this.doFetchPages }
             };
         }
 
-        
+        private static void OnSuccessfullLogout()
+        {
+            MessageBox.Show("Successfull Logout");
+        }
 
         private void LoginAndInit()
         {
@@ -126,11 +127,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             FacebookService.Logout(logoutMessage);
         }
 
-        private static void OnSuccessfullLogout()
-        {
-            MessageBox.Show("Successfull Logout");
-        }
-
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
             LoginAndInit();
@@ -142,7 +138,8 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             {
                 Status postedStatus = m_loggedInUser.PostStatus(textBoxPostText.Text);
                 MessageBox.Show("Status Posted! ID: " + postedStatus.Id);
-            } else
+            }
+            else
             {
                 textBoxPostText.Text = "You must post some text!";
             }
@@ -181,11 +178,9 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
         
         private void ButtonFetchPosts_Click(object sender, EventArgs e)
         {
-            
             postBindingSource.DataSource = m_loggedInUser.Events;
             m_Action = Actions.FetchPosts;
             m_Menu.Run((int)m_Action);
-            
         }
 
         private void doFetchPosts()
@@ -206,7 +201,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
 
         private void ListOfFriends_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void ButtonFetchLikedEvents_Click(object sender, EventArgs e)
@@ -265,7 +259,6 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             new Thread(() => FetchFriends(false)).Start();
             new Thread(FetchPages).Start();
             new Thread(FetchPosts).Start();
-
         }
 
         private void buttonFindMatch_Click(object sender, EventArgs e)

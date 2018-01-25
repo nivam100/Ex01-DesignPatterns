@@ -22,8 +22,10 @@ namespace A18_Ex01_Etai_201506656_Niv_203723622
             {
                 return new MoreInfoListOfEvents(facebookObj);
             }
-            
-            else return null; 
+            else
+            {
+                return null;
+            }
         }
     }
 }
